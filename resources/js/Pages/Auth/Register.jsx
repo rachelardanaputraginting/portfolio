@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import GuestLayout from '@/Layouts/GuestLayout';
+import Guest from '@/Layouts/Guest';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -119,3 +119,5 @@ export default function Register() {
         </>
     );
 }
+
+Register.layout = page => <Guest children={page} />
