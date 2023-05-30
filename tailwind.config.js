@@ -12,7 +12,14 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Work Sans', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                primary: '#382B49',
+                secondary: '#D7C5DF',
+                third: '#D7C5DF',
+                fourth: '#3B2D4E',
+                fifth: '#9A73B5',
             },
         },
     },
