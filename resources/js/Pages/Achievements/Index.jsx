@@ -7,10 +7,10 @@ import Navigation from '@/Components/Navigation';
 import CardHorizontal from '@/Components/CardHorizontal';
 import Title from '@/Components/Title';
 
-export default function Home(props) {
+export default function Index(props) {
     return (
         <>
-            <Head title="Home" />
+            <Head title="Achievement" />
             <Header >
                 <div className="flex items-start flex-wrap">
                     <div className="w-full sm:w-1/4">
@@ -114,4 +114,4 @@ export default function Home(props) {
     );
 }
 
-Home.layout = page => <App children={page} />
+Index.layout = page => <App children={page} />

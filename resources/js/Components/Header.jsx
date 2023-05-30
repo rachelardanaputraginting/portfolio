@@ -20,13 +20,13 @@ function Image() {
 
 function Title({ title }) {
     return (
-        <div className='sm:text-4xl font-semibold flex justify-start leading-relaxed text-2xl'>{title}</div>
+        <div className='sm:text-4xl text-center sm:text-start font-semibold flex justify-start leading-relaxed text-2xl'>{title}</div>
     )
 }
 
 function Subtitle({ subtitle }) {
     return (
-        <div className='text-xl'>{subtitle}</div>
+        <div className='text-xl text-center sm:text-start mb-1'>{subtitle}</div>
     )
 }
 

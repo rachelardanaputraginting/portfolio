@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,6 +21,9 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::resource('products', ProductController::class);
+Route::resource('skills', SkillController::class);
+Route::resource('achievements', AchievementController::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

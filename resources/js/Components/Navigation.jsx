@@ -1,10 +1,15 @@
+import { Link, usePage } from '@inertiajs/react';
+import clsx from 'clsx';
 import React from 'react'
 
-function Navigation({ children, href }) {
+function Navigation({ children, className, href, active, ...props }) {
     return (
         <div className='mt-0 md:mt-12'>
-            <a href={href} className='rounded font-medium w-full py-2.5 text-center text-third bg-gradient-to-r from-fifth block' as="button">{children}</a>
-        </div>
+            <Link
+                {...props}
+                href={href}
+                className={clsx(usePage().url == href && 'from-red-500', className, 'rounded font-medium w-full py-2.5 text-center text-third bg-gradient-to-r from-fifth block')}> {children}</Link>
+        </div >
     )
 }
 

@@ -41,12 +41,12 @@ export default function Home(props) {
             </Header>
             <Container>
                 <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
-                    <Navigation href={`#`}>Activitas</Navigation>
-                    <Navigation href={`#`}>Skills</Navigation>
-                    <Navigation href={`#`}>Products</Navigation>
-                    <Navigation href={`#`}>Educations</Navigation>
-                    <Navigation href={`#`}>Experinces</Navigation>
-                    <Navigation href={`#`}>Achievements</Navigation>
+                    <Navigation href={`/`}>Activitas</Navigation>
+                    <Navigation href={`/skills`}>Skills</Navigation>
+                    <Navigation href={`/products`}>Products</Navigation>
+                    <Navigation href={`educations`}>Educations</Navigation>
+                    <Navigation href={`/experiences`}>Experinces</Navigation>
+                    <Navigation href={`/achievements`}>Achievements</Navigation>
                 </div>
             </Container>
 
