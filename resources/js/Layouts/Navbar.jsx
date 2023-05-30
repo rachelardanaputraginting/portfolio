@@ -13,7 +13,7 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px ml-10 sm:ml-0 sm:flex">
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     My Portfolio
                                 </NavLink>

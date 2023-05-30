@@ -19,7 +19,7 @@ module.exports = {
                 secondary: '#D7C5DF',
                 third: '#D7C5DF',
                 fourth: '#3B2D4E',
-                fifth: '#9A73B5',
+                fifth: '#7B4F8E',
             },
         },
     },
