@@ -21,7 +21,7 @@
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased bg-fourth">
+<body class="font-sans antialiased bg-fourth mx-2 sm:mx-0">
     @inertia
 </body>
 

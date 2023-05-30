@@ -12,11 +12,11 @@ export default function Home(props) {
         <>
             <Head title="Home" />
             <Header >
-                <div className="flex items-start">
-                    <div className="w-1/4">
+                <div className="flex items-start flex-wrap">
+                    <div className="w-full sm:w-1/4">
                         <Header.Image />
                     </div>
-                    <div className="w-3/4">
+                    <div className="w-full sm:w-3/4 text-center">
                         <Header.Title title="RACHEL ARDANA PUTRA GINTING" />
                         <Header.Subtitle subtitle="Youtuber | Web Developer" />
                         <div className='flex gap-5'>
@@ -40,7 +40,7 @@ export default function Home(props) {
                 </div>
             </Header>
             <Container>
-                <div className="grid grid-cols-6 md:grid-cols-8 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
                     <Navigation href={`#`}>Activitas</Navigation>
                     <Navigation href={`#`}>Skills</Navigation>
                     <Navigation href={`#`}>Products</Navigation>

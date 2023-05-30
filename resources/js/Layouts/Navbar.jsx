@@ -9,7 +9,7 @@ export default function Navbar() {
     const { auth } = usePage().props
     return (
         <>
-            <nav className="bg-fourth border-b border-primary">
+            <nav className="bg-fourth shadow-lg border-b border-primary">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
@@ -27,7 +27,7 @@ export default function Navbar() {
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex items-center px-3 py-2 border border-transparent text-base leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                className="inline-flex items-center px-3 py-2 text-base leading-4 font-medium rounded-md text-third bg-transparent hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {auth.user ? <>
 

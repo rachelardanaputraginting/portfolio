@@ -4,7 +4,7 @@ import Rachel from '@/Images/Rachel.png';
 
 function Header({ children }) {
     return (
-        <div className='bg-primary shadow w-full text-white py-12'>
+        <div className='bg-primary shadow-lg w-full text-third py-12'>
             <Container>
                 {children}
             </Container>
@@ -20,7 +20,7 @@ function Image() {
 
 function Title({ title }) {
     return (
-        <div className='text-4xl font-semibold flex justify-start'>{title}</div>
+        <div className='sm:text-4xl font-semibold flex justify-start leading-relaxed text-2xl'>{title}</div>
     )
 }
 
@@ -42,7 +42,7 @@ function Sosial({ icon, text }) {
 
 function Description({ description }) {
     return (
-        <div className='text-sm font-light text-third'>{description}</div>
+        <div className='text-sm font-light text-third leading-relaxed text-justify'>{description}</div>
     )
 }
 
