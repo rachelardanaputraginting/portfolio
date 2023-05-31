@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -24,6 +26,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('products', ProductController::class);
 Route::resource('skills', SkillController::class);
 Route::resource('achievements', AchievementController::class);
+Route::resource('educations', EducationController::class);
+Route::resource('experiences', ExperiencesController::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

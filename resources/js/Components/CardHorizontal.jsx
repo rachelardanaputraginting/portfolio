@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import React from 'react'
 
 function CardHorizontal({ icon, children }) {
@@ -17,6 +18,12 @@ function Title({ title }) {
     )
 }
 
+function Badge({ badge, className }) {
+    return (
+        <span className={clsx('px-1 py-0.3 text-[12px] rounded text-third  d-flex w-max', className)}>{badge}</span>
+    )
+}
+
 function Description({ description }) {
     return (
         <p className="mb-3 text-third font-light text-sm dark:text-gray-400">{description}</p>
@@ -24,5 +31,6 @@ function Description({ description }) {
 }
 
 CardHorizontal.Title = Title;
+CardHorizontal.Badge = Badge;
 CardHorizontal.Description = Description;
 export default CardHorizontal;

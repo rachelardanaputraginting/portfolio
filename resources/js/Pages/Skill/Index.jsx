@@ -44,8 +44,8 @@ export default function Index(props) {
                     <Navigation href={`/`}>Activitas</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>
-                    <Navigation href={`educations`}>Educations</Navigation>
-                    <Navigation href={`/experiences`}>Experinces</Navigation>
+                    <Navigation href={`/educations`}>Educations</Navigation>
+                    <Navigation href={`/experiences`}>Experiences</Navigation>
                     <Navigation href={`/achievements`}>Achievements</Navigation>
                 </div>
             </Container>
@@ -66,6 +66,7 @@ export default function Index(props) {
                         <path d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897" />
                         <path d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z" />
                     </svg>}>
+                        <CardHorizontal.Badge badge="Advanced" className="bg-red-500" />
                         <CardHorizontal.Title title="Belajar React Native" />
                         <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
                     </CardHorizontal >
@@ -79,6 +80,7 @@ export default function Index(props) {
                         <path d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897" />
                         <path d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z" />
                     </svg>}>
+                        <CardHorizontal.Badge badge="Intermidate" className="bg-green-500" />
                         <CardHorizontal.Title title="Belajar React Native" />
                         <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
                     </CardHorizontal >
@@ -92,6 +94,7 @@ export default function Index(props) {
                         <path d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897" />
                         <path d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z" />
                     </svg>}>
+                        <CardHorizontal.Badge badge="Beginner" className="bg-sky-500" />
                         <CardHorizontal.Title title="Belajar React Native" />
                         <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
                     </CardHorizontal >
@@ -105,6 +108,7 @@ export default function Index(props) {
                         <path d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897" />
                         <path d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z" />
                     </svg>}>
+                        <CardHorizontal.Badge badge="Beginner" className="bg-sky-500" />
                         <CardHorizontal.Title title="Belajar React Native" />
                         <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
                     </CardHorizontal >

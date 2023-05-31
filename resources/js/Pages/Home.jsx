@@ -44,8 +44,8 @@ export default function Home(props) {
                     <Navigation href={`/`}>Activitas</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>
-                    <Navigation href={`educations`}>Educations</Navigation>
-                    <Navigation href={`/experiences`}>Experinces</Navigation>
+                    <Navigation href={`/educations`}>Educations</Navigation>
+                    <Navigation href={`/experiences`}>Experiences</Navigation>
                     <Navigation href={`/achievements`}>Achievements</Navigation>
                 </div>
             </Container>
