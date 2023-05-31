@@ -14,7 +14,11 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        return inertia('Achievements/Index');
+        $achievements = Achievement::all();
+
+        return inertia('Achievements/Index', [
+            "achievements" => $achievements
+        ]);
     }
 
     /**

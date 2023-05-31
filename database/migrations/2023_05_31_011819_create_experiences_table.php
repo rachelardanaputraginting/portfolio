@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('description');
             $table->year('entry_year');
             $table->year('out_year');
+            $table->string('location');
             $table->string('status');
             $table->string('picture')->nullable();
             $table->timestamps();

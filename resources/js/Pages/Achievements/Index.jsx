@@ -7,7 +7,8 @@ import Navigation from '@/Components/Navigation';
 import CardHorizontal from '@/Components/CardHorizontal';
 import Title from '@/Components/Title';
 
-export default function Index(props) {
+export default function Index({ achievements }) {
+    console.log(achievements);
     return (
         <>
             <Head title="Achievement" />
@@ -27,14 +28,16 @@ export default function Index(props) {
             </Container>
 
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <CardHorizontal icon={<h1 className='text-9xl px-5 font-extrabold'>3</h1>}>
-                        <CardHorizontal.Badge badge="Juara 3" className={'from-blue-500 px-2.5 py-1 bg-gradient-to-r text-base'} />
-                        <CardHorizontal.Title title="Web Design Technology" />
-                        <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
-                        <CardHorizontal.Footer year="2021" location="Banda Aceh" position="Juara 3" />
-                    </CardHorizontal >
-                </div>
+                {achievements.map(achievement => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <CardHorizontal rank={achievement.ranking}>
+                            <CardHorizontal.Badge badge={`Juara ${achievement.ranking}`} className={'from-blue-500 px-2.5 py-1 bg-gradient-to-r text-base'} />
+                            <CardHorizontal.Title title={achievement.title} />
+                            <CardHorizontal.Description description={achievement.description} />
+                            <CardHorizontal.Footer year={achievement.year} location={achievement.location} position={achievement.division} />
+                        </CardHorizontal >
+                    </div>
+                ))}
             </Container >
         </>
     );

@@ -58,6 +58,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. At suscipit aperiam quia totam doloremque voluptas quam aliquid provident inventore harum similique ex aliquam natus, minus soluta voluptate vitae! Temporibus, deserunt.',
             'entry_year' => '2021',
             'out_year' => '2021',
+            'location' => 'Langsa',
             'status' => 'Intership',
             'picture' => 'https://flowbite.com/docs/images/blog/image-1.jpg',
         ]);
@@ -70,6 +71,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. At suscipit aperiam quia totam doloremque voluptas quam aliquid provident inventore harum similique ex aliquam natus, minus soluta voluptate vitae! Temporibus, deserunt.',
             'entry_year' => '2022',
             'out_year' => '2023',
+            'location' => 'Lhokseumawe',
             'status' => 'Employee',
             'picture' => 'https://flowbite.com/docs/images/blog/image-1.jpg',
         ]);

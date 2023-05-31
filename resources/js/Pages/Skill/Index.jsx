@@ -29,7 +29,7 @@ export default function Index({ skills }) {
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {skills.map(skill => (
-                        <CardHorizontal icon={skill.icon}>
+                        <CardHorizontal className="w-full" icon={skill.icon}>
                             <CardHorizontal.Badge badge={skill.level} className="bg-red-500" />
                             <CardHorizontal.Title title={skill.title} />
                             <CardHorizontal.Description description={skill.description} />

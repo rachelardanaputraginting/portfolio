@@ -32,7 +32,7 @@ export default function App({ auth, header, children }) {
                             } text="Lhokseumawe, Aceh"></Header.Sosial>
                         </div>
                         <Header.Subtitle subtitle="Tentang Saya" />
-                        <Header.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit! laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit!" />
+                        <Header.Description description="Menemukan kesenangan didunia Programming sejak SMK, selain belajar saya juga senang mengajarkan hal-hal yang sudah pernah saya pelajari melakui Article yang saya tulis dan Video Tutorial yang saya publish di Youtube. Ketertarikan belajar Programming membawa saya menjadi yang sekarang ini dan membuat penasaraan dengan hal baru dan terbiasa menghadapi suatu masalah" />
 
                     </div>
                 </div>
