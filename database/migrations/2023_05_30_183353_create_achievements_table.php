@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('title');
+            $table->text('description');
+            $table->text('year');
+            $table->text('location');
+            $table->text('position');
             $table->timestamps();
         });
     }

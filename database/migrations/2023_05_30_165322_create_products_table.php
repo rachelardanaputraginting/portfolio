@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('link');
+            $table->text('description');
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }
