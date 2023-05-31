@@ -15,7 +15,7 @@ function Footer({ children }) {
 
 function Title({ title }) {
     return (
-        <h4 className='text-base'>{title}</h4>
+        <h4 className='text-sm text-fourth font-medium tracking-widest'>{title}</h4>
     )
 }
 

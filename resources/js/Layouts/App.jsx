@@ -11,7 +11,7 @@ export default function App({ auth, header, children }) {
             <main>{children}</main>
             <Footer>
                 <Footer.Title title="Rachel Ardana Putra Ginting" />
-                <Footer.Subtitle subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas." />
+                <Footer.Subtitle subtitle="The future is for those who believe in their beautiful dreams" />
                 <Footer.Copyright copyright={'Copyright 2023. All reserved by rajartan_'} />
             </Footer>
         </>

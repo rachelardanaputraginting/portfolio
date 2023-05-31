@@ -51,7 +51,7 @@ export default function Index(props) {
             </Container>
 
             <Container>
-                <Title title="Educations" />
+                <Title title="Educations" subtitle="The following is my educational history so far" />
             </Container>
 
             <Container>

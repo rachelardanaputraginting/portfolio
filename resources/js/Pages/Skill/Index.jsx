@@ -33,7 +33,7 @@ export default function Index(props) {
                                 </svg>
                             } text="Lhokseumawe, Aceh"></Header.Sosial>
                         </div>
-                        <Header.Subtitle subtitle="Tentang Saya" />
+                        <Header.Subtitle subtitle="About Me" />
                         <Header.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit! laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur! Necessitatibus dicta tempore eum ut reprehenderit!" />
 
                     </div>
@@ -51,7 +51,7 @@ export default function Index(props) {
             </Container>
 
             <Container>
-                <Title title="Skills" />
+                <Title title="Skills" subtitle="Here are some of my abilities in the field of Web Developer" />
             </Container>
 
             <Container>
