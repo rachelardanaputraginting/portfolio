@@ -14,7 +14,10 @@ class EducationController extends Controller
      */
     public function index()
     {
-        return inertia('Educations/Index');
+        $educations = Education::latest()->get();
+        return inertia('Educations/Index', [
+            "educations" => $educations
+        ]);
     }
 
     /**

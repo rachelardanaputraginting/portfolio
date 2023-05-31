@@ -1,14 +1,16 @@
+import { Link } from '@inertiajs/react'
 import clsx from 'clsx'
 import React from 'react'
 
-function CardHorizontal({ icon, children }) {
+function CardHorizontal({ icon, children, className, src }) {
     return (
-        <a href="#" className="w-full flex flex-col items-center bg-gradient-to-r from-fifth rounded-lg shadow md:flex-row md:max-w-xl hover:bg-primary dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <div className='mx-auto mt-2 px-4 text-third'>{icon}</div>
-            <div className="flex flex-col justify-between p-4 leading-normal">
+        <Link href="#" className="w-full flex items-start flex-col bg-gradient-to-r from-fifth rounded-lg shadow md:flex-row md:max-w-xl hover:bg-primary dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div className={clsx('w-full mx-auto mt-2 pl-4 text-third flex text-center', className)} dangerouslySetInnerHTML={{ __html: icon }} />
+            <img src={src} width='160' className='mt-5 rounded' />
+            <div className="flex flex-col justify-between py-4 pr-4 leading-normal">
                 {children}
             </div>
-        </a>
+        </Link>
     )
 }
 
@@ -26,7 +28,7 @@ function Badge({ badge, className }) {
 
 function Description({ description }) {
     return (
-        <p className="mb-3 text-third font-light text-sm dark:text-gray-400">{description}</p>
+        <p className="mb-3 text-third font-light text-sm dark:text-gray-400 line-clamp-3">{description}</p>
     )
 }
 

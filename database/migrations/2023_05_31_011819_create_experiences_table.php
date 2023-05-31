@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('position');
+            $table->text('description');
+            $table->year('entry_year');
+            $table->year('out_year');
+            $table->string('status');
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }

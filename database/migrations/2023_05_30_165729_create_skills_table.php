@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('title');
-            $table->slug('description');
+            $table->string('slug')->unique();
+            $table->text('description');
             $table->string('level');
-            $table->string('icon');
+            $table->text('icon');
             $table->timestamps();
         });
     }

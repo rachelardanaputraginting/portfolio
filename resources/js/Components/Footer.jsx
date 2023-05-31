@@ -3,7 +3,7 @@ import Container from './Container'
 
 function Footer({ children }) {
     return (
-        <footer className="bg-third shadow-lg shadow-secondary rounded-t-lg">
+        <footer className="bg-third shadow-lg shadow-secondary rounded-t">
             <Container>
                 <div className='w-full mx-auto text-center text-fourth mt-24 py-12'>
                     {children}

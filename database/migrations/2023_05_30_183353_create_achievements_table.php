@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('ranking');
             $table->text('description');
-            $table->text('year');
-            $table->text('location');
-            $table->text('position');
+            $table->year('year');
+            $table->string('location');
+            $table->string('division');
             $table->timestamps();
         });
     }

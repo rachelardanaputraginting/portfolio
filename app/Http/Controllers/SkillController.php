@@ -15,7 +15,10 @@ class SkillController extends Controller
     public function index()
     {
         // return 'Hai';
-        return inertia('Skill/Index');
+        $skills = Skill::all();
+        return inertia('Skill/Index', [
+            "skills" => $skills,
+        ]);
     }
 
     /**

@@ -14,7 +14,10 @@ class ExperiencesController extends Controller
      */
     public function index()
     {
-        return inertia('Experiences/Index');
+        $experiences = Experiences::all();
+        return inertia('Experiences/Index', [
+            "experiences" => $experiences,
+        ]);
     }
 
     /**
