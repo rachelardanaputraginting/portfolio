@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\HomeController;
@@ -37,6 +38,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('admin/products', AdminProductController::class);
+    Route::resource('admin/skills', AdminSkillController::class);
+    Route::resource('admin/educations', AdminEducationController::class);
+    Route::resource('admin/achievements', AdminAchievementController::class);
+    Route::resource('admin/experiences', AdminExperienceController::class);
 });
 
 require __DIR__ . '/auth.php';
