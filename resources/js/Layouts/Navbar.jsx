@@ -19,7 +19,9 @@ export default function Navigation() {
                                 href={route('home')}
                                 className="text-lg font-semibold capitalize text-white"
                             >
-                                <ApplicationLogo />
+                                <div className='text-white'>
+                                    <ApplicationLogo />
+                                </div>
                             </Link>
 
                             <div className="flex flex-1 items-center justify-end">
