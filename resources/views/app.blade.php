@@ -25,4 +25,20 @@
     @inertia
 </body>
 
+<script>
+    const mouseWheel = document.querySelector('.scrolling-wrapper');
+
+    // Add wheel function
+    mouseWheel.addEventListener('wheel', function(e) {
+
+        const race = 30; // <= set scroll mouse move the wheels
+
+        if (e.deltaY > 0) // <= Scroll right
+            mouseWheel.scrollLeft += race;
+        else // Scroll left
+            mouseWheel.scrollLeft -= race;
+        e.preventDefault();
+    });
+</script>
+
 </html>

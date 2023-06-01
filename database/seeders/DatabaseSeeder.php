@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
             'title' => 'Aplikasi QR Cafe',
             'slug' => 'qr-cafe',
-            'link' => 'qrcafe.co.id',
+            'link' => 'https://qr_cafe.co.id',
             'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus, quo autem! Ullam et dolorum necessitatibus iusto ab esse dolores quo nisi placeat amet repellat eos, sed pariatur corrupti? Vitae provident animi voluptas! Nulla reprehenderit nostrum ad harum, atque consequatur. Minus!',
             'picture' => Storage::url('https://flowbite.com/docs/images/blog/image-1.jpg'),
         ]);

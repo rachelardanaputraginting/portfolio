@@ -100,7 +100,7 @@ const DropdownButton = ({ className, ...props }) => {
 
 const Dropdown = ({ className, children }) => {
     return (
-        <div className="relative">
+        <div className='relative'>
             <Menu>
                 <Menu.Button>
                     <svg
@@ -118,7 +118,7 @@ const Dropdown = ({ className, children }) => {
                         />
                     </svg>
                 </Menu.Button>
-                <Menu.Items className="absolute top-0 right-7 z-10 w-56 divide-y overflow-hidden rounded-md border bg-white py-0.5 text-left shadow-sm">
+                <Menu.Items className="absolute z-[9999] w-56 divide-y rounded-md border bg-white py-0.5 text-left shadow-sm">
                     {children}
                 </Menu.Items>
             </Menu>

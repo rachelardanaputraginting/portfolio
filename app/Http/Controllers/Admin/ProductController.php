@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AdminProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return inertia('Admin/Products/Index', [
-            "products" => $products
+            "products" => AdminProductResource::collection($products),
         ]);
     }
 
