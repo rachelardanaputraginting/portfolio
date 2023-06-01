@@ -1,71 +1,80 @@
-import React from 'react'
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import Dropdown from '@/Components/Dropdown';
+import React from 'react';
 import NavLink from '@/Components/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import DropdownMenu from '@/Components/DropdownMenu';
+import ResponsiveNavigation from '@/Layouts/ResponsiveNavigation';
 import { Link, usePage } from '@inertiajs/react';
+import Container from '@/Components/Container';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
-export default function Navbar() {
-    const { auth } = usePage().props
+export default function Navigation() {
+    const { auth } = usePage().props;
     return (
         <>
-            <nav className="bg-fourth shadow-lg border-b border-primary">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between h-16">
-                        <div className="flex">
-                            <div className="hidden space-x-8 sm:-my-px ml-10 sm:ml-0 sm:flex">
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                    My Portfolio
-                                </NavLink>
-                            </div>
-                        </div>
+            <ResponsiveNavigation />
+            <Container>
+                <nav className="hidden bg-fourth py-4 shadow-lg lg:block rounded-md">
+                    <div className="mx-auto max-w-screen-2xl">
+                        <div className="flex items-center justify-between">
+                            <Link
+                                href={route('home')}
+                                className="text-lg font-semibold capitalize text-white"
+                            >
+                                <ApplicationLogo />
+                            </Link>
 
-                        <div className="hidden sm:flex sm:items-center sm:ml-6">
-                            <div className="ml-3 relative">
-                                <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <span className="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                className="inline-flex items-center px-3 py-2 text-base leading-4 font-medium rounded-md text-third bg-transparent hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                                            >
-                                                {auth.user ? <>
-
-                                                    {auth.user.name}
-                                                </>
-                                                    : "Rachel Ardana Putra Ginting"
-                                                }
-
-                                                <svg
-                                                    className="ml-2 -mr-0.5 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
+                            <div className="flex flex-1 items-center justify-between">
+                                <div className='flex'>
+                                    <ApplicationLogo />
+                                    <NavLink>Dashboard</NavLink>
+                                </div>
+                                <div className="flex items-center">
+                                    {auth.user ?
+                                        <div className="flex items-center">
+                                            <DropdownMenu label={auth.user.name}>
+                                                <DropdownMenu.Links
+                                                    href={route('dashboard')}
                                                 >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </Dropdown.Trigger>
+                                                    Dashboard
+                                                </DropdownMenu.Links>
+                                                <DropdownMenu.Links href={`/${auth.user.username}`}>
+                                                    My profile
+                                                </DropdownMenu.Links>
+                                                <DropdownMenu.Links href={'#'}>
+                                                    Settings
+                                                </DropdownMenu.Links>
+                                                <DropdownMenu.Divider />
+                                                {auth.user.hasRole ?
+                                                    <>
+                                                        <DropdownMenu.Links href={route('articles.table')}>
+                                                            My articles
+                                                        </DropdownMenu.Links>
+                                                        <DropdownMenu.Links href={route('articles.create')}>
+                                                            New article
+                                                        </DropdownMenu.Links>
+                                                    </>
+                                                    : null}
 
-                                    <Dropdown.Content>
-                                        <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
-                                        <Dropdown.Link href={route('logout')} method="post" as="button">
-                                            Log Out
-                                        </Dropdown.Link>
-                                    </Dropdown.Content>
-                                </Dropdown>
+                                                <DropdownMenu.Divider />
+                                                <DropdownMenu.Links
+                                                    href={route('logout')}
+                                                    method="POST"
+                                                    as="button"
+                                                >
+                                                    Logout
+                                                </DropdownMenu.Links>
+                                            </DropdownMenu>
+                                        </div>
+                                        :
+                                        <NavLink href={route('home')}>
+                                            Rachel Ardana Putra Ginting
+                                        </NavLink>
+                                    }
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                </div>
-
-            </nav>
+                </nav>
+            </Container>
         </>
-    )
+    );
 }
