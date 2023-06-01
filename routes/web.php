@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\Admin\AchievementController as AdminAchievementController;
+use App\Http\Controllers\Admin\EducationController as AdminEducationController;
+use App\Http\Controllers\Admin\ExperiencesController as AdminExperiencesController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\SkillController as AdminSkillController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\HomeController;
@@ -43,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/skills', AdminSkillController::class);
     Route::resource('admin/educations', AdminEducationController::class);
     Route::resource('admin/achievements', AdminAchievementController::class);
-    Route::resource('admin/experiences', AdminExperienceController::class);
+    Route::resource('admin/experiences', AdminExperiencesController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -22,11 +22,7 @@ export default function Navigation() {
                                 <ApplicationLogo />
                             </Link>
 
-                            <div className="flex flex-1 items-center justify-between">
-                                <div className='flex'>
-                                    <ApplicationLogo />
-                                    <NavLink>Dashboard</NavLink>
-                                </div>
+                            <div className="flex flex-1 items-center justify-end">
                                 <div className="flex items-center">
                                     {auth.user ?
                                         <div className="flex items-center">

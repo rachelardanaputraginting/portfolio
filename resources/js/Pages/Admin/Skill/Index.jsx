@@ -7,13 +7,13 @@ import Navigation from '@/Components/Navigation';
 import CardHorizontal from '@/Components/CardHorizontal';
 import Title from '@/Components/Title';
 
-export default function Dashboard(props) {
+export default function Index({ skills }) {
     return (
         <>
-            <Head title="Dashbboard" />
+            <Head title="Skills" />
             <Container>
                 <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
-                    <Navigation href={`/dashboard`}>Dashboard</Navigation>
+                    <Navigation href={`/dashboard`}>Activitas</Navigation>
                     <Navigation href={`/admin/skills`}>Skills</Navigation>
                     <Navigation href={`/admin/products`}>Products</Navigation>
                     <Navigation href={`/admin/educations`}>Educations</Navigation>
@@ -23,7 +23,7 @@ export default function Dashboard(props) {
             </Container>
 
             <Container>
-                <Title title="Admin - Dashboard" />
+                <Title title="Skills" subtitle="Here are some of my abilities in the field of Web Developer" />
             </Container>
 
             <Container>
@@ -35,4 +35,4 @@ export default function Dashboard(props) {
     );
 }
 
-Dashboard.layout = page => <App children={page} />
+Index.layout = page => <App children={page} />
