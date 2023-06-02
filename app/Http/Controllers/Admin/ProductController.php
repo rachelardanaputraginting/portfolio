@@ -16,7 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::query()
+            ->select('title', 'slug', 'picture', 'user_id', 'created_at', 'link', 'description', 'id')
+            ->latest()
+            ->fastPaginate();
         return inertia('Admin/Products/Index', [
             "products" => AdminProductResource::collection($products),
         ]);
@@ -29,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Admin/Products/Create');
     }
 
     /**
@@ -85,6 +88,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return back();
     }
 }

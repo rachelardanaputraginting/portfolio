@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { forwardRef, useEffect, useRef } from 'react';
 
 export default forwardRef(function TextInput({ type = 'text', className = '', isFocused = false, ...props }, ref) {
@@ -14,9 +15,7 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
             <input
                 {...props}
                 type={type}
-                className={
-                    'border-red focus:border-secondary focus:ring-indigo-500 rounded-md shadow-sm bg-red-500' +
-                    className
+                className={clsx('border-third text-third focus:border-third focus:secondary rounded-md shadow-sm bg-fourth', className)
                 }
                 ref={input}
             />

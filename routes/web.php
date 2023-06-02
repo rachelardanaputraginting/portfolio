@@ -43,7 +43,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('admin/products', AdminProductController::class);
+    Route::get('admin/products', [AdminProductController::class, 'index'])->name('admin.products.index');
+    Route::get('admin/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
+    Route::delete('admin/products/{product:slug}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
+    Route::post('admin/products', [AdminProductController::class, 'store'])->name('admin.products.store');
     Route::resource('admin/skills', AdminSkillController::class);
     Route::resource('admin/educations', AdminEducationController::class);
     Route::resource('admin/achievements', AdminAchievementController::class);

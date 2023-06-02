@@ -2,12 +2,24 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from '@/Components/Footer';
 import Header from '@/Components/Header';
+import { Toaster } from 'react-hot-toast';
 
 export default function App({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
         <>
+            <div><Toaster
+                toastOptions={{
+                    style: {
+                        border: '1px solid #382B49',
+                        padding: '16px',
+                        font: 'Work-Sans',
+                        color: '#D7C5DF',
+                        background: '#3B2D4E'
+                    },
+                }}
+            /></div>
             <Navbar />
             <Header >
                 <div className="flex items-start flex-wrap">

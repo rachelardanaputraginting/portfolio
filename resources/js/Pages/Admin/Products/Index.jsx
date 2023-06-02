@@ -7,8 +7,12 @@ import Navigation from '@/Components/Navigation';
 import CardHorizontal from '@/Components/CardHorizontal';
 import Title from '@/Components/Title';
 import Table from '@/Components/Table';
+import Pagination from '@/Components/Pagination';
+import useSwal from '@/Hooks/useSwal';
 
-export default function Index({ products }) {
+export default function Index(props) {
+    const { data: products, meta, links } = props.products;
+    const { ask } = useSwal();
     return (
         <>
             <Head title="Products" />
@@ -28,7 +32,7 @@ export default function Index({ products }) {
             </Container>
 
             <Container>
-                <Link href={`/products/create`} className='rounded px-3 py-2 bg-gradient-to-r from-sky-600 to-fifth mb-4 flex gap-2 my-12 max-w-max text-third'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <Link href={route('admin.products.create')} className='rounded px-3 py-2 bg-gradient-to-r from-sky-600 to-fifth mb-4 flex gap-2 my-12 max-w-max text-third'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
                     Add Product</Link>
@@ -47,7 +51,7 @@ export default function Index({ products }) {
                         {products.map((product, i) => (
                             <>
                                 <tr>
-                                    <Table.Td>{i + 1}</Table.Td>
+                                    <Table.Td>{i + meta.from}</Table.Td>
                                     <Table.Td><img src={product.picture} className='w-20 rounded' /></Table.Td>
                                     <Table.Td>{product.title}</Table.Td>
                                     <Table.Td>{product.description}</Table.Td>
@@ -64,7 +68,7 @@ export default function Index({ products }) {
                                         </Link>
                                         <Link onClick={() => {
                                             ask({
-                                                url: route('products.destroy', product.slug),
+                                                url: route('admin.products.destroy', product.slug),
                                                 method: "delete",
                                                 message: "You sure you want to delete it?"
                                             })
@@ -78,7 +82,8 @@ export default function Index({ products }) {
                         ))}
                     </Table.Tbody>
                 </Table>
-            </Container >
+                <Pagination meta={meta} links={links} />
+            </Container>
         </>
     );
 }
