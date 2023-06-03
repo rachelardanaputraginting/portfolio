@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Http\Resources\AdminProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $picture = $request->file('picture');
         $request->user()->products()->create([
@@ -74,7 +75,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return inertia('Admin/Products/Edit', [
+            "product" => $product
+        ]);
     }
 
     /**
@@ -84,9 +87,18 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $picture = $request->file('picture');
+        $product->update([
+            "title" => $title = $request->title,
+            "slug" => $title,
+            "link" => $request->link,
+            "description" => $request->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $product->slug . '.' . $picture->extension()) : $product->picture
+        ]);
+
+        return to_route('admin.products.index');
     }
 
     /**

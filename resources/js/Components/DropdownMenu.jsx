@@ -72,7 +72,7 @@ function Links({ isActive = false, children, ...props }) {
 }
 
 function Divider() {
-    return <div className="w-full h-px bg-gradient-to-r my-2 block from-fourth-700 via-red-500 to-transparent ml-2" />
+    return <div className="w-full h-px bg-gradient-to-r my-2 block from-red-500 to-transparent ml-2" />
 }
 
 DropdownMenu.Links = Links;

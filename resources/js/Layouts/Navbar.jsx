@@ -41,18 +41,6 @@ export default function Navigation() {
                                                     Settings
                                                 </DropdownMenu.Links>
                                                 <DropdownMenu.Divider />
-                                                {auth.user.hasRole ?
-                                                    <>
-                                                        <DropdownMenu.Links href={route('articles.table')}>
-                                                            My articles
-                                                        </DropdownMenu.Links>
-                                                        <DropdownMenu.Links href={route('articles.create')}>
-                                                            New article
-                                                        </DropdownMenu.Links>
-                                                    </>
-                                                    : null}
-
-                                                <DropdownMenu.Divider />
                                                 <DropdownMenu.Links
                                                     href={route('logout')}
                                                     method="POST"

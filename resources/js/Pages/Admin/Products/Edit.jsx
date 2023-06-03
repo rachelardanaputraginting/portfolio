@@ -1,15 +1,15 @@
-import Button from '@/Components/Button'
+
 import Container from '@/Components/Container'
-import Header from '@/Components/Header'
 import App from '@/Layouts/App'
 import { Head, useForm } from '@inertiajs/react'
 import React from 'react'
-import { Inertia } from '@inertiajs/inertia'
-import ArticleForm from '@/Components/ArticleForm'
+import { toast } from 'react-hot-toast'
+import ProductForm from '@/Components/ProductForm'
+import PrimaryButton from '@/Components/PrimaryButton'
 // npm install @inertiajs/inertia @inertiajs/inertia-react --save
 
-export default function Edit({ product, statuses }) {
-    const { data, setData } = useForm({
+export default function Edit({ product }) {
+    const { data, setData, put } = useForm({
         title: product.title,
         link: product.link,
         description: product.description,
@@ -19,13 +19,10 @@ export default function Edit({ product, statuses }) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        Inertia.post(route('articles.update', product.slug), {
+        put(route('admin.products.update', product.slug), {
             ...data,
-            _method: "PUT",
-            category_id: data.category_id.id,
-            status: data.status.id,
-            tags: data.tags.map(t => t.id)
-        })
+            onSuccess: () => toast.success('Product has been updated!'),
+        });
     }
 
     return (
@@ -33,8 +30,8 @@ export default function Edit({ product, statuses }) {
             <Head title={`Update Article ${product.title}`} />
             <Container>
                 <form onSubmit={onSubmit}>
-                    <ArticleForm {...{ data, setData }} />
-                    <Button>Update</Button>
+                    <ProductForm {...{ data, setData }} />
+                    <PrimaryButton>Update</PrimaryButton>
                 </form>
             </Container>
         </div>
