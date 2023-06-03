@@ -43,7 +43,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $picture = $request->file('picture');
+        $request->user()->products()->create([
+            "title" => $title = $request->title,
+            "slug" => $slug = str($title)->slug(),
+            "link" => $request->link,
+            "description" => $request->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/products', $slug . '.' . $picture->extension()) : null
+        ]);
+
+        return to_route('admin.products.index');
     }
 
     /**

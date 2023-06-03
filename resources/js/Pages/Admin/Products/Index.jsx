@@ -52,7 +52,7 @@ export default function Index(props) {
                             <>
                                 <tr>
                                     <Table.Td>{i + meta.from}</Table.Td>
-                                    <Table.Td><img src={product.picture} className='w-20 rounded' /></Table.Td>
+                                    <Table.Td><img src={product.picture} className='w-20 rounded' alt={product.picture} /></Table.Td>
                                     <Table.Td>{product.title}</Table.Td>
                                     <Table.Td>{product.description}</Table.Td>
                                     <Table.Td><a href={product.link} target='_blank' className='underline text-blue-500'>{product.link}</a></Table.Td>

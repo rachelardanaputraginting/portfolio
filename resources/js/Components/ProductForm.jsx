@@ -4,11 +4,10 @@ import Error from './Error'
 import Textarea from './Textarea'
 import InputFile from './InputFile'
 import { usePage } from '@inertiajs/react'
-import Input from './Input'
 import TextInput from './TextInput'
 
 export default function ProductForm({ data, setData }) {
-    const { errors, auth } = usePage().props;
+    const { errors } = usePage().props;
 
     const onChange = (e) => {
         setData(e.target.name, e.target.value)
@@ -31,9 +30,9 @@ export default function ProductForm({ data, setData }) {
                 {errors.link ? <Error className='' value={errors.link} /> : null}
             </div>
             <div className="mb-6">
-                <InputLabel htmlFor="teaser" value="Description" />
-                <Textarea rows="6" name='teaser' id='teaser' onChange={onChange} value={data.teaser} />
-                {errors.teaser ? <Error className='' value={errors.teaser} /> : null}
+                <InputLabel htmlFor="description" value="Description" />
+                <Textarea rows="6" name='description' id='description' onChange={onChange} value={data.description} />
+                {errors.description ? <Error className='' value={errors.description} /> : null}
             </div>
         </>
     )
