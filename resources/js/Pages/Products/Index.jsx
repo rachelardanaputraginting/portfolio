@@ -27,15 +27,15 @@ export default function Index({ products }) {
             </Container>
 
             <Container>
-                {products.map(product => (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <Card src={product.picture}>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {products.map(product => (
+                        <Card src={`storage/${product.picture}`}>
                             <Card.Title title={product.title} />
                             <Card.Subtitle subtitle={product.description} />
                             <Card.Button href1={product.link} href2={``} />
                         </Card>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </Container >
         </>
     );
