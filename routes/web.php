@@ -12,20 +12,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('products', ProductController::class);
@@ -43,12 +31,25 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('admin/products', [AdminProductController::class, 'index'])->name('admin.products.index');
-    Route::get('admin/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
-    Route::delete('admin/products/{product:slug}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
-    Route::post('admin/products', [AdminProductController::class, 'store'])->name('admin.products.store');
-    Route::get('admin/products/{product:slug}/edit', [AdminProductController::class, 'edit'])->name('admin.products.edit');
-    Route::put('admin/products/{product:slug}', [AdminProductController::class, 'update'])->name('admin.products.update');
+    // Products
+    Route::controller(AdminProductController::class)->group(function () {
+        Route::get('admin/products', 'index')->name('admin.products.index');
+        Route::get('admin/products/create', 'create')->name('admin.products.create');
+        Route::delete('admin/products/{product:slug}', 'destroy')->name('admin.products.destroy');
+        Route::post('admin/products', 'store')->name('admin.products.store');
+        Route::get('admin/products/{product:slug}/edit', 'edit')->name('admin.products.edit');
+        Route::put('admin/products/{product:slug}', 'update')->name('admin.products.update');
+    });
+
+    // Educations
+    Route::controller(AdminEducationController::class)->group(function () {
+        Route::get('admin/educations', 'index')->name('admin.educations.index');
+        Route::get('admin/educations/create', 'create')->name('admin.educations.create');
+        Route::delete('admin/educations/{product:slug}', 'destroy')->name('admin.educations.destroy');
+        Route::post('admin/educations', 'store')->name('admin.educations.store');
+        Route::get('admin/educations/{product:slug}/edit', 'edit')->name('admin.educations.edit');
+        Route::put('admin/educations/{product:slug}', 'update')->name('admin.educations.update');
+    });
 
     Route::resource('admin/skills', AdminSkillController::class);
     Route::resource('admin/educations', AdminEducationController::class);

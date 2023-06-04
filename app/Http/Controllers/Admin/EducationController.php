@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AdminEducationResource;
 use App\Models\Education;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,13 @@ class EducationController extends Controller
      */
     public function index()
     {
-        //
+        $educations = Education::query()
+            ->select('name', 'slug', 'picture', 'user_id', 'department', 'status', 'year', 'location', 'description', 'id')
+            ->latest()
+            ->fastPaginate();
+        return inertia('Admin/Educations/Index', [
+            "educations" => AdminEducationResource::collection($educations),
+        ]);
     }
 
     /**

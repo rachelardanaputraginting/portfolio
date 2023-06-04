@@ -12,7 +12,7 @@ export default function Index({ skills }) {
         <>
             <Head title="Skills" />
             <Container>
-                <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
+                <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
                     <Navigation href={`/`}>Activitas</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>

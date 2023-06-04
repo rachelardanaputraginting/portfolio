@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class AdminProductResource extends JsonResource
+class AdminEducationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,10 +19,12 @@ class AdminProductResource extends JsonResource
         return [
             "id" => $this->id,
             "user_id" => $this->user_id,
-            "title" => $title =  $this->title,
-            "slug" => Str::slug($title),
-            "link" => $this->link,
-            "status" => str($this->status)->ucfirst(),
+            "name" => $name =  $this->name,
+            "slug" => Str::slug($name),
+            "department" => $this->department,
+            "status" => $this->status,
+            "year" => $this->year,
+            "location" => $this->location,
             "description" => Str::limit($this->description, 50, '...'),
             "picture" => $this->picture ? Storage::url($this->picture) : 'https://flowbite.com/docs/images/blog/image-1.jpg',
 
