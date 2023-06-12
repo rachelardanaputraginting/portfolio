@@ -30,10 +30,11 @@ const Tbody = ({ children }) => {
     );
 };
 
-const Td = ({ className = '', children, ...props }) => {
+const Td = ({ className = '', colSpan, children, ...props }) => {
     return (
         <td
             {...props}
+            colSpan={colSpan}
             className={clsx(className, 'whitespace-nowrap px-6 py-4 text-third text-sm')}
         >
             {children}

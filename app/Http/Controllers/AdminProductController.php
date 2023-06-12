@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Http\Resources\AdminProductResource;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Http\Resources\ProductResource;
 
-class ProductController extends Controller
+class AdminProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +20,7 @@ class ProductController extends Controller
             ->latest()
             ->fastPaginate();
         return inertia('Admin/Products/Index', [
-            "products" => AdminProductResource::collection($products),
+            "products" => ProductResource::collection($products),
         ]);
     }
 
@@ -91,10 +89,10 @@ class ProductController extends Controller
     {
         $picture = $request->file('picture');
         $product->update([
-            "title" => $title = $request->title,
-            "slug" => $title,
-            "link" => $request->link,
-            "description" => $request->description,
+            "title" => $title = $request->title ? $request->title : $product->title,
+            "slug" => str($title)->slug(),
+            "link" => $request->link ? $request->link : $product->link,
+            "description" => $request->description ? $request->description : $product->description,
             "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $product->slug . '.' . $picture->extension()) : $product->picture
         ]);
 

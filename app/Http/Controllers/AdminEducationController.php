@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Achievement;
+use App\Models\Education;
 use Illuminate\Http\Request;
 
-class AchievementController extends Controller
+class AdminEducationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +41,10 @@ class AchievementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Achievement  $achievement
+     * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function show(Achievement $achievement)
+    public function show(Education $education)
     {
         //
     }
@@ -53,10 +52,10 @@ class AchievementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Achievement  $achievement
+     * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function edit(Achievement $achievement)
+    public function edit(Education $education)
     {
         //
     }
@@ -65,10 +64,10 @@ class AchievementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Achievement  $achievement
+     * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Achievement $achievement)
+    public function update(Request $request, Education $education)
     {
         //
     }
@@ -76,10 +75,10 @@ class AchievementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Achievement  $achievement
+     * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Achievement $achievement)
+    public function destroy(Education $education)
     {
         //
     }

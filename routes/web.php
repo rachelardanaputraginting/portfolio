@@ -1,11 +1,7 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
-use App\Http\Controllers\Admin\AchievementController as AdminAchievementController;
-use App\Http\Controllers\Admin\EducationController as AdminEducationController;
-use App\Http\Controllers\Admin\ExperiencesController as AdminExperiencesController;
-use App\Http\Controllers\Admin\ProductController as AdminProductController;
-use App\Http\Controllers\Admin\SkillController as AdminSkillController;
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\HomeController;
@@ -33,28 +29,28 @@ Route::middleware('auth')->group(function () {
 
     // Products
     Route::controller(AdminProductController::class)->group(function () {
-        Route::get('admin/products', 'index')->name('admin.products.index');
-        Route::get('admin/products/create', 'create')->name('admin.products.create');
-        Route::delete('admin/products/{product:slug}', 'destroy')->name('admin.products.destroy');
-        Route::post('admin/products', 'store')->name('admin.products.store');
-        Route::get('admin/products/{product:slug}/edit', 'edit')->name('admin.products.edit');
-        Route::put('admin/products/{product:slug}', 'update')->name('admin.products.update');
+        Route::get('/admin/products', 'index')->name('admin.products.index');
+        Route::get('/admin/products/create', 'create')->name('admin.products.create');
+        Route::delete('/admin/products/{product:slug}', 'destroy')->name('admin.products.destroy');
+        Route::post('/admin/products', 'store')->name('admin.products.store');
+        Route::get('/admin/products/{product:slug}/edit', 'edit')->name('admin.products.edit');
+        Route::put('/admin/products/{product:slug}', 'update')->name('admin.products.update');
     });
 
-    // Educations
-    Route::controller(AdminEducationController::class)->group(function () {
-        Route::get('admin/educations', 'index')->name('admin.educations.index');
-        Route::get('admin/educations/create', 'create')->name('admin.educations.create');
-        Route::delete('admin/educations/{product:slug}', 'destroy')->name('admin.educations.destroy');
-        Route::post('admin/educations', 'store')->name('admin.educations.store');
-        Route::get('admin/educations/{product:slug}/edit', 'edit')->name('admin.educations.edit');
-        Route::put('admin/educations/{product:slug}', 'update')->name('admin.educations.update');
-    });
+    // // Educations
+    // Route::controller(AdminEducationController::class)->group(function () {
+    //     Route::get('admin/educations', 'index')->name('admin.educations.index');
+    //     Route::get('admin/educations/create', 'create')->name('admin.educations.create');
+    //     Route::delete('admin/educations/{product:slug}', 'destroy')->name('admin.educations.destroy');
+    //     Route::post('admin/educations', 'store')->name('admin.educations.store');
+    //     Route::get('admin/educations/{product:slug}/edit', 'edit')->name('admin.educations.edit');
+    //     Route::put('admin/educations/{product:slug}', 'update')->name('admin.educations.update');
+    // });
 
-    Route::resource('admin/skills', AdminSkillController::class);
-    Route::resource('admin/educations', AdminEducationController::class);
-    Route::resource('admin/achievements', AdminAchievementController::class);
-    Route::resource('admin/experiences', AdminExperiencesController::class);
+    // Route::resource('admin/skills', AdminSkillController::class);
+    // Route::resource('admin/educations', AdminEducationController::class);
+    // Route::resource('admin/achievements', AdminAchievementController::class);
+    // Route::resource('admin/products', AdminProductController::class);
 });
 
 require __DIR__ . '/auth.php';

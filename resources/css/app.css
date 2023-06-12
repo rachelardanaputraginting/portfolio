@@ -29,5 +29,5 @@
 }
 
 .scrolling-modal::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-fifth to-red-500 rounded border;
+    @apply bg-gradient-to-b from-red-500 via-yellow-600 to-green-600 rounded border;
 }
