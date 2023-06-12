@@ -25,9 +25,12 @@ class EducationRequest extends FormRequest
     {
         return [
             "picture" => ['nullable', 'mimes:png,jpg, jpeg', 'image'],
-            "title" => ['required', 'string', 'min:3'],
+            "name" => ['required', 'string', 'min:3'],
+            "department" => ['required', 'string', 'min:3'],
+            "year" => ['required', 'min:3'],
+            "location" => ['required', 'string', 'min:3'],
+            "status" => ['required', 'string', 'min:3'],
             "description" => ['required', 'string', 'min:3'],
-            "link" => ['required']
         ];
     }
 }

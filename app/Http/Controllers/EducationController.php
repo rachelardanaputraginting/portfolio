@@ -14,7 +14,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $educations = Education::latest()->get();
+        $educations = Education::latest('year')->get();
         return inertia('Educations/Index', [
             "educations" => $educations
         ]);

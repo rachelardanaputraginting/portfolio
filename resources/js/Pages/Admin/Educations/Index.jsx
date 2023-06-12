@@ -81,6 +81,7 @@ export default function Index(props) {
                             <Table.Th>Department</Table.Th>
                             <Table.Th>Year</Table.Th>
                             <Table.Th>Location</Table.Th>
+                            <Table.Th>Actions</Table.Th>
                         </tr>
                     </Table.Thead>
                     <Table.Tbody>
@@ -91,7 +92,7 @@ export default function Index(props) {
                                     <Table.Td><img src={education.picture} className='w-20 rounded' alt={education.picture} /></Table.Td>
                                     <Table.Td>{education.name}</Table.Td>
                                     <Table.Td>{education.department}</Table.Td>
-                                    <Table.Td>{education.year}</Table.Td>
+                                    <Table.Td>{education.year ? education.year : "Active"}</Table.Td>
                                     <Table.Td>{education.location}</Table.Td>
                                     <Table.Td className='flex gap-2'>
                                         <button onClick={() => show(education)} className='transition duration-300 ease-linear px-1.5 py-1.5 rounded hover:scale-125 bg-gradient-to-r from-green-500 to-fifth'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

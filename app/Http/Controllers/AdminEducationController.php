@@ -44,15 +44,18 @@ class AdminEducationController extends Controller
     public function store(EducationRequest $request)
     {
         $picture = $request->file('picture');
-        $request->user()->Educations()->create([
-            "title" => $title = $request->title,
-            "slug" => $slug = str($title)->slug(),
-            "link" => $request->link,
+        $request->user()->educations()->create([
+            "name" => $name = $request->name,
+            "slug" => $slug = str($name)->slug(),
+            "department" => $request->department,
+            "year" => $request->year,
+            "location" => $request->location,
+            "status" => $request->status,
             "description" => $request->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/Educations', $slug . '.' . $picture->extension()) : null
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/educations', $slug . '.' . $picture->extension()) : null
         ]);
 
-        return to_route('admin.Educations.index');
+        return to_route('admin.educations.index');
     }
 
     /**

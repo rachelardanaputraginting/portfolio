@@ -1,15 +1,18 @@
 import React from 'react';
 import { Head, useForm } from '@inertiajs/react';
 import App from '@/Layouts/App';
-import ProductForm from '@/Components/ProductForm';
+import EducationForm from '@/Components/EducationForm';
 import PrimaryButton from '@/Components/PrimaryButton';
 import Container from '@/Components/Container';
 import { toast } from 'react-hot-toast';
 
 export default function Create(props) {
     const { post, data, setData } = useForm({
-        title: '',
-        link: '',
+        name: '',
+        department: '',
+        year: '',
+        location: '',
+        status: '',
         description: '',
         picture: '',
     })
@@ -27,7 +30,7 @@ export default function Create(props) {
             <Head title="Add Education" />
             <Container>
                 <form onSubmit={onSubmit} className='mt-12'>
-                    <ProductForm {...{ data, setData }} />
+                    <EducationForm {...{ data, setData }} />
                     <PrimaryButton>Create</PrimaryButton>
                 </form>
             </Container>

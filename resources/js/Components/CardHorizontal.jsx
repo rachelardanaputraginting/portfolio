@@ -4,11 +4,13 @@ import React from 'react'
 
 function CardHorizontal({ icon, children, className, src, rank }) {
     return (
-        <Link href="#" className="w-full flex items-start flex-col bg-gradient-to-r from-fifth rounded-lg shadow md:flex-row md:max-w-xl hover:bg-primary dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <div className={clsx('mx-auto mt-2 pl-4 text-third flex text-center', className)} dangerouslySetInnerHTML={{ __html: icon }} />
-            <h1 className='text-[130px] pl-4 font-bold font-mono text-center mx-auto flex text-third'>{rank}</h1>
-            <img src={src} width='150' className='mt-4 mx-auto flex text-center' />
-            <div className="flex flex-col justify-between py-4 px-4 leading-normal">
+        <Link href="#" className="w-full flex items-start bg-gradient-to-r from-fifth rounded-lg shadow md:flex-row md:max-w-xl hover:bg-primary dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div className="w-1/3">
+                <div className={clsx('mx-auto mt-2 text-third flex text-center', className)} dangerouslySetInnerHTML={{ __html: icon }} />
+                <h1 className='text-[130px] font-bold font-mono text-center mx-auto flex text-third'>{rank}</h1>
+                <img src={src} width='120' className='mt-4 mx-auto flex text-center' />
+            </div>
+            <div className="w-2/3 flex flex-col justify-between py-4 pl-4 leading-normal">
                 {children}
             </div>
         </Link>
