@@ -16,12 +16,12 @@ class AdminEducationController extends Controller
      */
     public function index()
     {
-        $Educations = Education::query()
+        $educations = Education::query()
             ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
             ->latest()
             ->fastPaginate();
         return inertia('Admin/Educations/Index', [
-            "educations" => EducationResource::collection($Educations),
+            "educations" => EducationResource::collection($educations),
         ]);
     }
 
@@ -61,10 +61,10 @@ class AdminEducationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Education  $Education
+     * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function show(Education $Education)
+    public function show(Education $education)
     {
         //
     }
@@ -72,13 +72,13 @@ class AdminEducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Education  $Education
+     * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function edit(Education $Education)
+    public function edit(Education $education)
     {
         return inertia('Admin/Educations/Edit', [
-            "Education" => $Education
+            "education" => $education
         ]);
     }
 
@@ -86,36 +86,39 @@ class AdminEducationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Education  $Education
+     * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function update(EducationRequest $request, Education $Education)
+    public function update(EducationRequest $request, Education $education)
     {
         $picture = $request->file('picture');
-        $Education->update([
-            "title" => $title = $request->title ? $request->title : $Education->title,
-            "slug" => str($title)->slug(),
-            "link" => $request->link ? $request->link : $Education->link,
-            "description" => $request->description ? $request->description : $Education->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $Education->slug . '.' . $picture->extension()) : $Education->picture
+        $education->update([
+            "name" => $name = $request->name ? $request->name : $education->name,
+            "slug" => str($name)->slug(),
+            "department" => $request->department ? $request->department : $education->department,
+            "year" => $request->year ? $request->year : $education->year,
+            "location" => $request->location ? $request->location : $education->location,
+            "status" => $request->status ? $request->status : $education->status,
+            "description" => $request->description ? $request->description : $education->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $education->slug . '.' . $picture->extension()) : $education->picture
         ]);
 
-        return to_route('admin.Educations.index');
+        return to_route('admin.educations.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Education  $Education
+     * @param  \App\Models\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Education $Education)
+    public function destroy(Education $education)
     {
-        if ($Education->picture) {
-            Storage::delete($Education->picture);
+        if ($education->picture) {
+            Storage::delete($education->picture);
         }
 
-        $Education->delete();
+        $education->delete();
         return back();
     }
 }

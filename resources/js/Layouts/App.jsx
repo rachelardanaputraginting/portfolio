@@ -41,9 +41,9 @@ export default function App({ auth, header, children }) {
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" strokeWidth={0} fill="currentColor" />
                                 </svg>
-                            } text="Lhokseumawe, Aceh"></Header.Sosial>
+                            } text="Aceh, Indonesia"></Header.Sosial>
                         </div>
-                        <Header.Subtitle subtitle="Tentang Saya" />
+                        <Header.Subtitle subtitle="About Me" />
                         <Header.Description description="Menemukan kesenangan didunia Programming sejak SMK, selain belajar saya juga senang mengajarkan hal-hal yang sudah pernah saya pelajari melakui Article yang saya tulis dan Video Tutorial yang saya publish di Youtube. Ketertarikan belajar Programming membawa saya menjadi yang sekarang ini dan membuat penasaraan dengan hal baru dan terbiasa menghadapi suatu masalah" />
 
                     </div>

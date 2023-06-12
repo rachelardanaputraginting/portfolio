@@ -18,7 +18,7 @@ export default function useSwal() {
         }).then((value) => {
             if (value == true) {
                 destroy((url), {
-                    onSuccess: () => toast.success('Removed')
+                    onSuccess: () => toast.success('Education has been deleted!')
                 })
             }
         });

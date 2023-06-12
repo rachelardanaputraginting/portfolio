@@ -4,14 +4,17 @@ import App from '@/Layouts/App'
 import { Head, router, useForm } from '@inertiajs/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
-import ProductForm from '@/Components/ProductForm'
+import EducationForm from '@/Components/EducationForm'
 import PrimaryButton from '@/Components/PrimaryButton'
 // npm install @inertiajs/inertia @inertiajs/inertia-react --save
 
 export default function Edit({ education }) {
     const { data, setData } = useForm({
-        title: education.title,
-        link: education.link,
+        name: education.name,
+        department: education.department,
+        year: education.year,
+        location: education.location,
+        status: education.status,
         description: education.description,
         picture: '',
     })
@@ -32,7 +35,7 @@ export default function Edit({ education }) {
             <Head title={`Update Education : ${education.title}`} />
             <Container>
                 <form onSubmit={onSubmit}>
-                    <ProductForm {...{ data, setData }} />
+                    <EducationForm {...{ data, setData }} />
                     <PrimaryButton>Update</PrimaryButton>
                 </form>
             </Container>

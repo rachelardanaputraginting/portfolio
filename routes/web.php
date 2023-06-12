@@ -43,10 +43,10 @@ Route::middleware('auth')->group(function () {
     Route::controller(AdminEducationController::class)->group(function () {
         Route::get('/admin/educations', 'index')->name('admin.educations.index');
         Route::get('/admin/educations/create', 'create')->name('admin.educations.create');
-        Route::delete('/admin/educations/{product:slug}', 'destroy')->name('admin.educations.destroy');
+        Route::delete('/admin/educations/{education:slug}', 'destroy')->name('admin.educations.destroy');
         Route::post('/admin/educations', 'store')->name('admin.educations.store');
-        Route::get('/admin/educations/{product:slug}/edit', 'edit')->name('admin.educations.edit');
-        Route::put('/admin/educations/{product:slug}', 'update')->name('admin.educations.update');
+        Route::get('/admin/educations/{education:slug}/edit', 'edit')->name('admin.educations.edit');
+        Route::put('/admin/educations/{education:slug}', 'update')->name('admin.educations.update');
     });
 });
 
