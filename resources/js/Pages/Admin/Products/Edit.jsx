@@ -1,7 +1,7 @@
 
 import Container from '@/Components/Container'
 import App from '@/Layouts/App'
-import { Head, useForm } from '@inertiajs/react'
+import { Head, router, useForm } from '@inertiajs/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 import ProductForm from '@/Components/ProductForm'
@@ -19,7 +19,7 @@ export default function Edit({ product }) {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(data);
-        post(route('admin.products.update', product), {
+        router.post(`/admin/products/${product.slug}`, {
             _method: 'put',
             ...data
         }, {
@@ -29,7 +29,7 @@ export default function Edit({ product }) {
 
     return (
         <div>
-            <Head title={`Update Product ${product.title}`} />
+            <Head title={`Update Product : ${product.title}`} />
             <Container>
                 <form onSubmit={onSubmit}>
                     <ProductForm {...{ data, setData }} />

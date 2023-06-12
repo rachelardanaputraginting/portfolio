@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Http\Resources\ProductResource;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
@@ -16,7 +17,7 @@ class AdminProductController extends Controller
     public function index()
     {
         $products = Product::query()
-            ->select('title', 'slug', 'picture', 'user_id', 'created_at', 'link', 'description', 'id')
+            ->select('title', 'slug', 'picture', 'user_id', 'link', 'description', 'id')
             ->latest()
             ->fastPaginate();
         return inertia('Admin/Products/Index', [
@@ -107,8 +108,11 @@ class AdminProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        if ($product->picture) {
+            Storage::delete($product->picture);
+        }
 
+        $product->delete();
         return back();
     }
 }

@@ -16,11 +16,8 @@ export default function Index(props) {
     const { data, setData } = useForm({
         title: '',
         slug: '',
-        department: '',
-        year: '',
-        location: '',
-        status: '',
         description: '',
+        link: ''
     })
 
     let [isOpen, setIsOpen] = useState(false)
@@ -41,14 +38,11 @@ export default function Index(props) {
         <>
             <Modal show={isOpen} onClose={setIsOpen} >
                 <img src={data.picture} alt="" />
-                <h2 className='px-3 text-sm py-1 bg-gradient-to-r from-yellow-500  flex items-center gap-2 max-w-max rounded mx-4 mt-4'>{data.department}</h2>
-                <Modal.Title title={data.name} />
-
-                <div className="flex gap-10 px-4 mb-8 mt-2">
-                    <span className='text-sm font-light'>{data.year}</span>
-                    <span className='text-sm font-light'>{data.location}</span>
-                    <span className='text-sm font-light'>{data.status}</span>
-                </div>
+                <Modal.Title title={data.title} />
+                <Link href={data.link} className='px-3 text-sm py-1 bg-gradient-to-r from-red-500 to-fifth flex items-center gap-2 max-w-max rounded m-4'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg> Visit Education</Link>
 
                 <Modal.Description description={data.description + 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam dolorum unde rem doloremque culpa placeat, non eum vitae maiores beatae dolorem dolor facilis. Rerum odio nostrum minus quae fugit dolores cupiditate maiores! Earum possimus libero maiores dolores ab ipsam. Ipsa molestiae perferendis incidunt debitis magni voluptatum id cupiditate excepturi ad, sapiente eligendi obcaecati vitae distinctio eaque, ipsam rerum, unde dolore quidem voluptates porro veniam. Cupiditate corrupti, ullam fugit officia hic deserunt similique modi nemo nobis, quidem eaque sed quia asperiores blanditiis doloribus quae voluptas illum fugiat. Blanditiis voluptatem incidunt vero sit quam non aliquam? A animi perferendis fugit saepe recusandae?'} />
                 <button onClick={onClose} className='fixed right-5 top-5 border-none z-[9999] text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -57,9 +51,9 @@ export default function Index(props) {
                 </button>
             </Modal >
 
-            <Head title="Educations" />
+            <Head title="Education" />
             <Container>
-                <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
                     <Navigation href={`/dashboard`}>Index</Navigation>
                     <Navigation href={`/admin/skills`}>Skills</Navigation>
                     <Navigation href={`/admin/products`}>Products</Navigation>
@@ -70,11 +64,11 @@ export default function Index(props) {
             </Container>
 
             <Container>
-                <Title title="Admin - Educations" active={true} />
+                <Title title="Admin - Education" active={true} />
             </Container>
 
             <Container>
-                <Link href={`/admin/educations.create`} className='rounded px-2 py-1.5 text-sm bg-gradient-to-r from-sky-600 to-fifth mb-4 flex items-center gap-1 my-12 max-w-max text-third'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                <Link href={route('admin.educations.create')} className='rounded px-2 py-1.5 text-sm bg-gradient-to-r from-sky-600 to-fifth mb-4 flex items-center gap-1 my-12 max-w-max text-third'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
                     Add Education</Link>
@@ -87,23 +81,18 @@ export default function Index(props) {
                             <Table.Th>Department</Table.Th>
                             <Table.Th>Year</Table.Th>
                             <Table.Th>Location</Table.Th>
-                            <Table.Th>Status</Table.Th>
-                            <Table.Th>Action</Table.Th>
                         </tr>
                     </Table.Thead>
                     <Table.Tbody>
                         {educations.map((education, i) => (
                             <>
                                 <tr key={education.id}>
-
                                     <Table.Td>{i + meta.from}</Table.Td>
                                     <Table.Td><img src={education.picture} className='w-20 rounded' alt={education.picture} /></Table.Td>
                                     <Table.Td>{education.name}</Table.Td>
                                     <Table.Td>{education.department}</Table.Td>
                                     <Table.Td>{education.year}</Table.Td>
                                     <Table.Td>{education.location}</Table.Td>
-                                    <Table.Td>{education.status}</Table.Td>
-                                    <Table.Td><a href={education.link} target='_blank' className='underline text-blue-500'>{education.link}</a></Table.Td>
                                     <Table.Td className='flex gap-2'>
                                         <button onClick={() => show(education)} className='transition duration-300 ease-linear px-1.5 py-1.5 rounded hover:scale-125 bg-gradient-to-r from-green-500 to-fifth'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />

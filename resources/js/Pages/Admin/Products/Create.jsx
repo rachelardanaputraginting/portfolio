@@ -18,7 +18,7 @@ export default function Create(props) {
         e.preventDefault();
         post(route('admin.products.store'), {
             ...data,
-            onSuccess: () => toast.success('Create successfully')
+            onSuccess: () => toast.success('Product has been added!')
         })
     }
 

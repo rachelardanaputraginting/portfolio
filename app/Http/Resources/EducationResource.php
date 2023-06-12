@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class AdminEducationResource extends JsonResource
+class EducationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +18,6 @@ class AdminEducationResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "user_id" => $this->user_id,
             "name" => $name =  $this->name,
             "slug" => Str::slug($name),
             "department" => $this->department,

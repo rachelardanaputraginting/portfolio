@@ -16,15 +16,15 @@ export default function Create(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        post(route('admin.products.store'), {
+        post(route('admin.educations.store'), {
             ...data,
-            onSuccess: () => toast.success('Create successfully')
+            onSuccess: () => toast.success('Education has been added!')
         })
     }
 
     return (
         <>
-            <Head title="Add Product" />
+            <Head title="Add Education" />
             <Container>
                 <form onSubmit={onSubmit} className='mt-12'>
                     <ProductForm {...{ data, setData }} />

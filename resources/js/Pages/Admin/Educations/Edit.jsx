@@ -1,33 +1,35 @@
 
 import Container from '@/Components/Container'
 import App from '@/Layouts/App'
-import { Head, useForm } from '@inertiajs/react'
+import { Head, router, useForm } from '@inertiajs/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 import ProductForm from '@/Components/ProductForm'
 import PrimaryButton from '@/Components/PrimaryButton'
 // npm install @inertiajs/inertia @inertiajs/inertia-react --save
 
-export default function Edit({ product }) {
-    const { data, setData, put } = useForm({
-        title: product.title,
-        link: product.link,
-        description: product.description,
+export default function Edit({ education }) {
+    const { data, setData } = useForm({
+        title: education.title,
+        link: education.link,
+        description: education.description,
         picture: '',
     })
 
-
     const onSubmit = (e) => {
         e.preventDefault();
-        put(route('admin.products.update', product.slug), {
-            ...data,
-            onSuccess: () => toast.success('Product has been updated!'),
+        console.log(data);
+        router.post(`/admin/educations/${education.slug}`, {
+            _method: 'put',
+            ...data
+        }, {
+            onSuccess: () => toast.success('Education has been updated!'),
         });
     }
 
     return (
         <div>
-            <Head title={`Update Article ${product.title}`} />
+            <Head title={`Update Education : ${education.title}`} />
             <Container>
                 <form onSubmit={onSubmit}>
                     <ProductForm {...{ data, setData }} />

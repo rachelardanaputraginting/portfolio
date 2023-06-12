@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AdminEducationController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('products', ProductController::class);
@@ -36,7 +36,17 @@ Route::middleware('auth')->group(function () {
         Route::delete('/admin/products/{product:slug}', 'destroy')->name('admin.products.destroy');
         Route::post('/admin/products', 'store')->name('admin.products.store');
         Route::get('/admin/products/{product:slug}/edit', 'edit')->name('admin.products.edit');
-        Route::put('/admin/products/{product}', 'update')->name('admin.products.update');
+        Route::put('/admin/products/{product:slug}', 'update')->name('admin.products.update');
+    });
+
+    // Educations
+    Route::controller(AdminEducationController::class)->group(function () {
+        Route::get('/admin/educations', 'index')->name('admin.educations.index');
+        Route::get('/admin/educations/create', 'create')->name('admin.educations.create');
+        Route::delete('/admin/educations/{product:slug}', 'destroy')->name('admin.educations.destroy');
+        Route::post('/admin/educations', 'store')->name('admin.educations.store');
+        Route::get('/admin/educations/{product:slug}/edit', 'edit')->name('admin.educations.edit');
+        Route::put('/admin/educations/{product:slug}', 'update')->name('admin.educations.update');
     });
 });
 
