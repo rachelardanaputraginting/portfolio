@@ -45,14 +45,11 @@ class AdminskillController extends Controller
     {
         $picture = $request->file('picture');
         $request->user()->skills()->create([
-            "name" => $name = $request->name,
-            "slug" => $slug = str($name)->slug(),
-            "department" => $request->department,
-            "year" => $request->year,
-            "location" => $request->location,
-            "status" => $request->status,
-            "description" => $request->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/skills', $slug . '.' . $picture->extension()) : null
+            "title" => $title = $request->title,
+            "slug" => $slug = str($title)->slug(),
+            "level" => $request->level,
+            "icon" => $request->icon,
+            "description" => $request->description
         ]);
 
         return to_route('admin.skills.index');
@@ -93,14 +90,11 @@ class AdminskillController extends Controller
     {
         $picture = $request->file('picture');
         $skill->update([
-            "name" => $name = $request->name ? $request->name : $skill->name,
+            "title" => $title = $request->title ? $request->title : $skill->title,
             "slug" => str($name)->slug(),
-            "department" => $request->department ? $request->department : $skill->department,
-            "year" => $request->year ? $request->year : $skill->year,
-            "location" => $request->location ? $request->location : $skill->location,
-            "status" => $request->status ? $request->status : $skill->status,
-            "description" => $request->description ? $request->description : $skill->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $skill->slug . '.' . $picture->extension()) : $skill->picture
+            "level" => $request->level ? $request->level : $skill->level,
+            "icon" => $request->icon ? $request->level : $skill->level,
+            "description" => $request->description ? $request->description : $skill->description
         ]);
 
         return to_route('admin.skills.index');
