@@ -44,7 +44,7 @@ export default function App({ auth, header, children }) {
                             } text="Aceh, Indonesia"></Header.Sosial>
                         </div>
                         <Header.Subtitle subtitle="About Me" />
-                        <Header.Description description="Menemukan kesenangan didunia Programming sejak SMK, selain belajar saya juga senang mengajarkan hal-hal yang sudah pernah saya pelajari melakui Article yang saya tulis dan Video Tutorial yang saya publish di Youtube. Ketertarikan belajar Programming membawa saya menjadi yang sekarang ini dan membuat penasaraan dengan hal baru dan terbiasa menghadapi suatu masalah" />
+                        <Header.Description description={`Menemukan kesenangan didunia Programming sejak SMK, selain belajar saya juga senang mengajarkan hal-hal yang sudah pernah saya pelajari melalui Article yang saya tulis dan Video Tutorial yang saya publish di Youtube. Melanjutkan pendidikan di Politeknik Negeri Lhokseumawe dengan jurusan yang sama. Ketertarikan belajar Programming membawa saya menjadi yang sekarang ini hingga penasaraan dengan hal baru dan terbiasa menghadapi suatu masalah`} />
 
                     </div>
                 </div>
