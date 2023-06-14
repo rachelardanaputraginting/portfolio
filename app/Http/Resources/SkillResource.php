@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class SkillResource extends JsonResource
 {
@@ -14,6 +16,13 @@ class SkillResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            "title" => $title =  $this->title,
+            "slug" => Str::slug($title),
+            "level" => $this->level,
+            "icon" => $this->icon,
+            "description" => Str::limit($this->description, 50, '...')
+        ];
     }
 }

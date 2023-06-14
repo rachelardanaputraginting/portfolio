@@ -17,10 +17,10 @@ class AdminskillController extends Controller
     public function index()
     {
         $skills = Skill::query()
-            ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
+            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->fastPaginate();
-        return inertia('Admin/skills/Index', [
+        return inertia('Admin/Skill/Index', [
             "skills" => SkillResource::collection($skills),
         ]);
     }

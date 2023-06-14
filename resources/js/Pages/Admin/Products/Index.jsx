@@ -53,7 +53,7 @@ export default function Index(props) {
 
             <Head title="Products" />
             <Container>
-                <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
+                <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
                     <Navigation href={`/dashboard`}>Index</Navigation>
                     <Navigation href={`/admin/skills`}>Skills</Navigation>
                     <Navigation href={`/admin/products`}>Products</Navigation>
