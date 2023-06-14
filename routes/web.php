@@ -3,6 +3,7 @@
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\AdminEducationController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminSkillController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperiencesController;
@@ -48,6 +49,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/educations/{education:slug}/edit', 'edit')->name('admin.educations.edit');
         Route::put('/admin/educations/{education:slug}', 'update')->name('admin.educations.update');
     });
+
+    // Skills
+    Route::controller(AdminSkillController::class)->group(function () {
+        Route::get('/admin/skills', 'index')->name('admin.skills.index');
+        Route::get('/admin/skills/create', 'create')->name('admin.skills.create');
+        Route::delete('/admin/skills/{skill:slug}', 'destroy')->name('admin.skills.destroy');
+        Route::post('/admin/skills', 'store')->name('admin.skills.store');
+        Route::get('/admin/skills/{skill:slug}/edit', 'edit')->name('admin.skills.edit');
+        Route::put('/admin/skills/{skill:slug}', 'update')->name('admin.skills.update');
+    });
+
+
 });
 
 require __DIR__ . '/auth.php';
