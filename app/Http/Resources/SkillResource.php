@@ -16,11 +16,21 @@ class SkillResource extends JsonResource
      */
     public function toArray($request)
     {
+        if ($this->level == 1) {
+            $level = "Beginner";
+        }elseif ($this->level == 2) {
+            $level = "Intermediate";
+        }else {
+            $level = "Advanced";
+        }
         return [
             "id" => $this->id,
             "title" => $title =  $this->title,
             "slug" => Str::slug($title),
-            "level" => $this->level,
+            "level" => [
+                "id" => $this->level,
+                "name" => $level
+            ],
             "icon" => $this->icon,
             "description" => Str::limit($this->description, 50, '...')
         ];

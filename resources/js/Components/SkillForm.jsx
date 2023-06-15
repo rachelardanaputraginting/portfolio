@@ -4,9 +4,27 @@ import Error from './Error'
 import Textarea from './Textarea'
 import { usePage } from '@inertiajs/react'
 import TextInput from './TextInput'
+import clsx from 'clsx'
+import { Listbox } from '@headlessui/react'
+import Select from './Select'
 
-export default function ProductForm({ data, setData }) {
+export default function SkillForm({ data, setData }) {
     const { errors } = usePage().props;
+
+    const levels = [
+        {
+            id: 1,
+            name: "Beginner",
+        },
+        {
+            id: 2,
+            name: "Intermediate",
+        },
+        {
+            id: 3,
+            name: "Advanced",
+        }
+    ];
 
     const onChange = (e) => {
         setData(e.target.name, e.target.value)
@@ -20,11 +38,8 @@ export default function ProductForm({ data, setData }) {
             </div>
             <div className="mb-6">
                 <InputLabel htmlFor="level" value="Level" />
-                <select name='level' className='border-third text-third focus:border-third focus:secondary rounded-md shadow-sm bg-fourth w-full' onChange={onChange}>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Advanced</option>
-                </select>
+                <Select value={data.level} data={levels} onChange={(e) => setData('level', e)} />
+                    {errors.level ? <Error className='' value={errors.level} /> : null}
             </div>
             <div className="mb-6">
                 <InputLabel htmlFor="icon" value="Icon" />

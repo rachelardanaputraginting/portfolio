@@ -1,5 +1,5 @@
 import React from 'react';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, router, useForm } from '@inertiajs/react';
 import App from '@/Layouts/App';
 import SkillForm from '@/Components/SkillForm';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -16,8 +16,10 @@ export default function Create(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        post(route('admin.skills.store'), {
+        router.post('/admin/skills', {
             ...data,
+            level: data.level.id,
+        }, {
             onSuccess: () => toast.success('Skill has been added!')
         })
     }

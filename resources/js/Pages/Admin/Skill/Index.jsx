@@ -47,10 +47,10 @@ export default function Index(props) {
                 </button>
             </Modal >
 
-            <Head title="Skill" />
+            <Head title="Skills" />
             <Container>
                 <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
-                    <Navigation href={`/dashboard`}>Index</Navigation>
+                    <Navigation href={`/dashboard`}>Dashboard</Navigation>
                     <Navigation href={`/admin/skills`}>Skills</Navigation>
                     <Navigation href={`/admin/products`}>Products</Navigation>
                     <Navigation href={`/admin/educations`}>Educations</Navigation>
@@ -60,7 +60,7 @@ export default function Index(props) {
             </Container>
 
             <Container>
-                <Title title="Admin - Skill" active={true} />
+                <Title title="Admin - Skills" active={true} />
             </Container>
 
             <Container>
@@ -86,7 +86,9 @@ export default function Index(props) {
                                     <Table.Td>{i + meta.from}</Table.Td>
                                     <Table.Td><div className="mx-auto mt-2 text-third flex text-center w-16" dangerouslySetInnerHTML={{ __html: skill.icon }} /></Table.Td>
                                     <Table.Td>{skill.title}</Table.Td>
-                                    <Table.Td>{skill.level}</Table.Td>
+                                    <Table.Td>
+                                        {skill.level.name}
+                                    </Table.Td>
                                     <Table.Td>{skill.description}</Table.Td>
                                     <Table.Td className='flex gap-2'>
                                         <button onClick={() => show(skill)} className='transition duration-300 ease-linear px-1.5 py-1.5 rounded hover:scale-125 bg-gradient-to-r from-green-500 to-fifth'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

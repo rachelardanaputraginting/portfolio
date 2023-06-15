@@ -73,7 +73,7 @@ class AdminskillController extends Controller
      */
     public function edit(Skill $skill)
     {
-        return inertia('Admin/skills/Edit', [
+        return inertia('Admin/Skill/Edit', [
             "skill" => $skill
         ]);
     }
@@ -87,12 +87,12 @@ class AdminskillController extends Controller
      */
     public function update(SkillRequest $request, Skill $skill)
     {
-        $picture = $request->file('picture');
+        // dd($request->all());
         $skill->update([
             "title" => $title = $request->title ? $request->title : $skill->title,
-            "slug" => str($name)->slug(),
-            "level" => $request->level ? $request->level : $skill->level,
-            "icon" => $request->icon ? $request->level : $skill->level,
+            "slug" => str($title)->slug(),
+            "level" => $request->level,
+            "icon" => $request->icon ? $request->icon : $skill->icon,
             "description" => $request->description ? $request->description : $skill->description
         ]);
 

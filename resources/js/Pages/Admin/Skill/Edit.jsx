@@ -4,38 +4,35 @@ import App from '@/Layouts/App'
 import { Head, router, useForm } from '@inertiajs/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
-import EducationForm from '@/Components/EducationForm'
+import SkillForm from '@/Components/SkillForm'
 import PrimaryButton from '@/Components/PrimaryButton'
-// npm install @inertiajs/inertia @inertiajs/inertia-react --save
 
-export default function Edit({ education }) {
+export default function Edit({ skill }) {
     const { data, setData } = useForm({
-        name: education.name,
-        department: education.department,
-        year: education.year,
-        location: education.location,
-        status: education.status,
-        description: education.description,
-        picture: '',
+        title: skill.title,
+        icon: skill.icon,
+        level: skill.level,
+        description: skill.description,
     })
 
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(data);
-        router.post(`/admin/educations/${education.slug}`, {
+        router.post(`/admin/skills/${skill.slug}`, {
             _method: 'put',
-            ...data
+            ...data,
+            level : data.level.id
         }, {
-            onSuccess: () => toast.success('Education has been updated!'),
+            onSuccess: () => toast.success('Skill has been updated!'),
         });
     }
 
     return (
         <div>
-            <Head title={`Update Education : ${education.title}`} />
+            <Head title={`Update Skill : ${skill.title}`} />
             <Container>
                 <form onSubmit={onSubmit}>
-                    <EducationForm {...{ data, setData }} />
+                    <SkillForm {...{ data, setData }} />
                     <PrimaryButton>Update</PrimaryButton>
                 </form>
             </Container>
