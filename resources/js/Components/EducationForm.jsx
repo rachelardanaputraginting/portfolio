@@ -22,11 +22,11 @@ export default function ProductForm({ data, setData }) {
             <div className="mb-6">
                 <InputLabel htmlFor="name" value="Name" />
                 <TextInput name='name' id='name' className="w-full" onChange={onChange} value={data.name} />
-                {errors.title ? <Error className='' value={errors.title} /> : null}
+                {errors.name ? <Error className='' value={errors.name} /> : null}
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
                 <div className="mb-6">
-                    <InputLabel htmlFor="year" value="Department" />
+                    <InputLabel htmlFor="department" value="Department" />
                     <TextInput name='department' id='department' className="w-full" onChange={onChange} value={data.department} />
                     {errors.department ? <Error className='' value={errors.department} /> : null}
                 </div>

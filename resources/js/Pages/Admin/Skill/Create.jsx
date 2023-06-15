@@ -1,36 +1,33 @@
 import React from 'react';
 import { Head, useForm } from '@inertiajs/react';
 import App from '@/Layouts/App';
-import EducationForm from '@/Components/EducationForm';
+import SkillForm from '@/Components/SkillForm';
 import PrimaryButton from '@/Components/PrimaryButton';
 import Container from '@/Components/Container';
 import { toast } from 'react-hot-toast';
 
 export default function Create(props) {
     const { post, data, setData } = useForm({
-        name: '',
-        department: '',
-        year: '',
-        location: '',
-        status: '',
+        title: '',
+        level: '',
+        icon: '',
         description: '',
-        picture: '',
     })
 
     const onSubmit = (e) => {
         e.preventDefault();
-        post(route('admin.educations.store'), {
+        post(route('admin.skills.store'), {
             ...data,
-            onSuccess: () => toast.success('Education has been added!')
+            onSuccess: () => toast.success('Skill has been added!')
         })
     }
 
     return (
         <>
-            <Head title="Add Education" />
+            <Head title="Add Skill" />
             <Container>
                 <form onSubmit={onSubmit} className='mt-12'>
-                    <EducationForm {...{ data, setData }} />
+                    <SkillForm {...{ data, setData }} />
                     <PrimaryButton>Create</PrimaryButton>
                 </form>
             </Container>

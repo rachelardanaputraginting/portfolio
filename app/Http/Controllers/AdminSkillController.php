@@ -32,7 +32,7 @@ class AdminskillController extends Controller
      */
     public function create()
     {
-        return inertia('Admin/Skills/Create');
+        return inertia('Admin/Skill/Create');
     }
 
     /**
@@ -43,10 +43,9 @@ class AdminskillController extends Controller
      */
     public function store(SkillRequest $request)
     {
-        $picture = $request->file('picture');
         $request->user()->skills()->create([
             "title" => $title = $request->title,
-            "slug" => $slug = str($title)->slug(),
+            "slug" => str($title)->slug(),
             "level" => $request->level,
             "icon" => $request->icon,
             "description" => $request->description
