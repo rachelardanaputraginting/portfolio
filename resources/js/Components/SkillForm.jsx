@@ -14,25 +14,16 @@ export default function ProductForm({ data, setData }) {
     return (
         <>
             <div className="mb-6">
-                <InputLabel htmlFor="title" value="Name" />
-                <TextInput title='title' id='title' className="w-full" onChange={onChange} value={data.title} />
+                <InputLabel htmlFor="title" value="Title" />
+                <TextInput name='title' id='title' className="w-full" onChange={onChange} value={data.title} />
                 {errors.title ? <Error className='' value={errors.title} /> : null}
             </div>
             <div className="mb-6">
                 <InputLabel htmlFor="level" value="Level" />
-                <select name='level' className='border-third text-third focus:border-third focus:secondary rounded-md shadow-sm bg-fourth w-full'>
-                    <option value="1" onChange={(e) => {
-                        onChange(e)
-                        setIsOpen(true)
-                    }}>Beginner</option>
-                    <option value="2" onChange={(e) => {
-                        onChange(e)
-                        setIsOpen(true)
-                    }}>Intermediate</option>
-                    <option value="3" onChange={(e) => {
-                        onChange(e)
-                        setIsOpen(true)
-                    }}>Advanced</option>
+                <select name='level' className='border-third text-third focus:border-third focus:secondary rounded-md shadow-sm bg-fourth w-full' onChange={onChange}>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Advanced</option>
                 </select>
             </div>
             <div className="mb-6">
