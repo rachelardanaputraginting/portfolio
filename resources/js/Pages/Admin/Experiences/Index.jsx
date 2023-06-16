@@ -11,7 +11,7 @@ import useSwal from '@/Hooks/useSwal';
 import Modal from '@/Components/Modal';
 
 export default function Index(props) {
-    const { ask } = useSwal();
+    const { ask} = useSwal();
 
     const { data, setData } = useForm({
         name: '',
@@ -41,12 +41,12 @@ export default function Index(props) {
         <>
             <Modal show={isOpen} onClose={setIsOpen} >
                 <img src={data.picture} alt={data.picture} className='w-1/4 p-4 ' />
-                <Modal.Title title={data.title} />
-                <p className='px-3 text-sm py-1 bg-gradient-to-r from-yellow-500 to-fifth flex items-center gap-2 max-w-max rounded m-4'>{data.department}</p>
+                <Modal.Title title={data.name} />
+                <p className='px-3 text-sm py-1 bg-gradient-to-r from-yellow-500 to-fifth flex items-center gap-2 max-w-max rounded m-4'>{data.position}</p>
                 <div className='flex gap-5 p-4'>
                     <div className='text-xs flex gap-1 mt-3 text-third'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
-                    </svg> {data.year}
+                    </svg> {data.entry_year} - {data.out_year}
                     </div>
                     <div className='text-xs flex gap-1 mt-3 text-third'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -65,7 +65,7 @@ export default function Index(props) {
                     </div>
                 </div>
 
-                <Modal.Description description={data.description + 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam dolorum unde rem doloremque culpa placeat, non eum vitae maiores beatae dolorem dolor facilis. Rerum odio nostrum minus quae fugit dolores cupiditate maiores! Earum possimus libero maiores dolores ab ipsam. Ipsa molestiae perferendis incidunt debitis magni voluptatum id cupiditate excepturi ad, sapiente eligendi obcaecati vitae distinctio eaque, ipsam rerum, unde dolore quidem voluptates porro veniam. Cupiditate corrupti, ullam fugit officia hic deserunt similique modi nemo nobis, quidem eaque sed quia asperiores blanditiis doloribus quae voluptas illum fugiat. Blanditiis voluptatem incidunt vero sit quam non aliquam? A animi perferendis fugit saepe recusandae?'} />
+                <Modal.Description description={data.description} />
                 <button onClick={onClose} className='fixed right-5 top-5 border-none z-[9999] text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -78,7 +78,7 @@ export default function Index(props) {
                     <Navigation href={`/dashboard`}>Index</Navigation>
                     <Navigation href={`/admin/skills`}>Skills</Navigation>
                     <Navigation href={`/admin/products`}>Products</Navigation>
-                    <Navigation href={`/admin/experiences`}>Educations</Navigation>
+                    <Navigation href={`/admin/educations`}>Educations</Navigation>
                     <Navigation href={`/admin/experiences`}>Experiences</Navigation>
                     <Navigation href={`/admin/achievements`}>Achievements</Navigation>
                 </div>
@@ -99,8 +99,9 @@ export default function Index(props) {
                             <Table.Th>#</Table.Th>
                             <Table.Th>Picture</Table.Th>
                             <Table.Th>Name</Table.Th>
-                            <Table.Th>Department</Table.Th>
+                            <Table.Th>Position</Table.Th>
                             <Table.Th>Year</Table.Th>
+                            <Table.Th>Status</Table.Th>
                             <Table.Th>Location</Table.Th>
                             <Table.Th>Actions</Table.Th>
                         </tr>
@@ -113,8 +114,9 @@ export default function Index(props) {
                                         <Table.Td>{i + meta.from}</Table.Td>
                                         <Table.Td><img src={experience.picture} className='w-20 rounded' alt={experience.picture} /></Table.Td>
                                         <Table.Td>{experience.name}</Table.Td>
-                                        <Table.Td>{experience.department}</Table.Td>
-                                        <Table.Td>{experience.year ? experience.year : "Active"}</Table.Td>
+                                        <Table.Td>{experience.position}</Table.Td>
+                                        <Table.Td>{experience.entry_year} - {experience.out_year}</Table.Td>
+                                        <Table.Td>{experience.status}</Table.Td>
                                         <Table.Td>{experience.location}</Table.Td>
                                         <Table.Td className='flex gap-2'>
                                             <button onClick={() => show(experience)} className='transition duration-300 ease-linear px-1.5 py-1.5 rounded hover:scale-125 bg-gradient-to-r from-green-500 to-fifth'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
@@ -130,6 +132,7 @@ export default function Index(props) {
                                                 ask({
                                                     url: route('admin.experiences.destroy', experience.slug),
                                                     method: "delete",
+                                                    data: "Experiences",
                                                     message: "You sure you want to delete it?"
                                                 })
                                             }} className='transition duration-300 ease-linear px-1.5 py-1.5 rounded hover:scale-125 bg-gradient-to-r from-red-500 to-fifth'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
@@ -143,7 +146,7 @@ export default function Index(props) {
                             ))}
                         </> :
                             <tr>
-                                <td colSpan={7} className='text-center text-third text-sm'>Data is still empty at this time</td>
+                                <td colSpan={8} className='text-center text-third text-sm'>Data is still empty at this time</td>
                             </tr>
                         }
                     </Table.Tbody >

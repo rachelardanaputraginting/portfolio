@@ -108,6 +108,7 @@ export default function Index(props) {
                                                 ask({
                                                     url: route('admin.products.destroy', product.slug),
                                                     method: "delete",
+                                                    data: "Product",
                                                     message: "You sure you want to delete it?"
                                                 })
                                             }} className='transition duration-300 ease-linear px-1.5 py-1.5 rounded hover:scale-125 bg-gradient-to-r from-red-500 to-fifth'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

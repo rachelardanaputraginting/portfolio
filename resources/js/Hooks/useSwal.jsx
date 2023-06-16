@@ -9,16 +9,16 @@ export default function useSwal() {
         url,
         message = 'Make sure you make good decisions!',
         method = 'post',
-        data = ''
+        data
     }) => {
         swal({
-            // icon: 'warning',
+            icon: 'warning',
             text: message,
             buttons: ['Nope', 'Yap'],
         }).then((value) => {
             if (value == true) {
                 destroy((url), {
-                    onSuccess: () => toast.success('Education has been deleted!')
+                    onSuccess: () => toast.success(data + ' has been deleted!')
                 })
             }
         });

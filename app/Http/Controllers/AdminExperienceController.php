@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EducationRequest;
+use App\Http\Requests\ExperienceRequest;
 use App\Models\Experience;
 use App\Http\Resources\ExperienceResource;
 use Illuminate\Support\Facades\Storage;
 
-class AdminExperiencesController extends Controller
+class AdminExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +17,12 @@ class AdminExperiencesController extends Controller
      */
     public function index()
     {
-        $educations = Experience::query()
-            ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
+        $experiences = Experience::query()
+            ->select('id', 'name', 'slug', 'picture', 'position', 'entry_year', 'out_year', 'location', 'status', 'description')
             ->latest()
             ->fastPaginate();
         return inertia('Admin/Experiences/Index', [
-            "educations" => ExperienceResource::collection($educations),
+            "experiences" => ExperienceResource::collection($experiences),
         ]);
     }
 
@@ -41,30 +42,31 @@ class AdminExperiencesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EducationRequest $request)
+    public function store(ExperienceRequest $request)
     {
         $picture = $request->file('picture');
-        $request->user()->educations()->create([
+        $request->user()->experiences()->create([
             "name" => $name = $request->name,
             "slug" => $slug = str($name)->slug(),
-            "department" => $request->department,
-            "year" => $request->year,
+            "position" => $request->position,
+            "entry_year" => $request->entry_year,
+            "out_year" => $request->out_year,
             "location" => $request->location,
             "status" => $request->status,
             "description" => $request->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/educations', $slug . '.' . $picture->extension()) : null
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/experiences', $slug . '.' . $picture->extension()) : null
         ]);
 
-        return to_route('admin.educations.index');
+        return to_route('admin.experiences.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Experience  $education
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function show(Experience $education)
+    public function show(Experience $experience)
     {
         //
     }
@@ -72,13 +74,13 @@ class AdminExperiencesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Experience  $education
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function edit(Experience $education)
+    public function edit(Experience $experience)
     {
         return inertia('Admin/Experiences/Edit', [
-            "education" => $education
+            "experience" => $experience
         ]);
     }
 
@@ -86,39 +88,40 @@ class AdminExperiencesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Experience  $education
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function update(EducationRequest $request, Experience $education)
+    public function update(ExperienceRequest $request, Experience $experience)
     {
         $picture = $request->file('picture');
-        $education->update([
-            "name" => $name = $request->name ? $request->name : $education->name,
+        $experience->update([
+            "name" => $name = $request->name ? $request->name : $experience->name,
             "slug" => str($name)->slug(),
-            "department" => $request->department ? $request->department : $education->department,
-            "year" => $request->year ? $request->year : $education->year,
-            "location" => $request->location ? $request->location : $education->location,
-            "status" => $request->status ? $request->status : $education->status,
-            "description" => $request->description ? $request->description : $education->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $education->slug . '.' . $picture->extension()) : $education->picture
+            "position" => $request->position ? $request->position : $experience->position,
+            "entry_year" => $request->entry_year ? $request->entry_year : $experience->entry_year,
+            "out_year" => $request->out_year ? $request->out_year : $experience->out_year,
+            "location" => $request->location ? $request->location : $experience->location,
+            "status" => $request->status ? $request->status : $experience->status,
+            "description" => $request->description ? $request->description : $experience->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $experience->slug . '.' . $picture->extension()) : $experience->picture
         ]);
 
-        return to_route('admin.educations.index');
+        return to_route('admin.experiences.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Experience  $education
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Experience $education)
+    public function destroy(Experience $experience)
     {
-        if ($education->picture) {
-            Storage::delete($education->picture);
+        if ($experience->picture) {
+            Storage::delete($experience->picture);
         }
 
-        $education->delete();
+        $experience->delete();
         return back();
     }
 }

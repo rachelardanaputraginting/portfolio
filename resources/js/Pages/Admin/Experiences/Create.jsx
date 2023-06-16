@@ -1,7 +1,7 @@
 import React from 'react';
 import { Head, useForm } from '@inertiajs/react';
 import App from '@/Layouts/App';
-import EducationForm from '@/Components/EducationForm';
+import ExperienceForm from '@/Components/ExperienceForm';
 import PrimaryButton from '@/Components/PrimaryButton';
 import Container from '@/Components/Container';
 import { toast } from 'react-hot-toast';
@@ -9,8 +9,9 @@ import { toast } from 'react-hot-toast';
 export default function Create(props) {
     const { post, data, setData } = useForm({
         name: '',
-        department: '',
-        year: '',
+        position: '',
+        entry_year: '',
+        out_year: '',
         location: '',
         status: '',
         description: '',
@@ -19,18 +20,18 @@ export default function Create(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        post(route('admin.educations.store'), {
+        post(route('admin.experiences.store'), {
             ...data,
-            onSuccess: () => toast.success('Education has been added!')
+            onSuccess: () => toast.success('Experience has been added!')
         })
     }
 
     return (
         <>
-            <Head title="Add Education" />
+            <Head title="Add Experience" />
             <Container>
                 <form onSubmit={onSubmit} className='mt-12'>
-                    <EducationForm {...{ data, setData }} />
+                    <ExperienceForm {...{ data, setData }} />
                     <PrimaryButton>Create</PrimaryButton>
                 </form>
             </Container>

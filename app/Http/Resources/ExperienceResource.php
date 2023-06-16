@@ -20,11 +20,12 @@ class ExperienceResource extends JsonResource
             "id" => $this->id,
             "name" => $name =  $this->name,
             "slug" => Str::slug($name),
-            "department" => $this->department,
-            "status" => $this->status,
-            "year" => $this->year,
+            "position" => $this->position,
+            "entry_year" => $this->entry_year,
+            "out_year" => $this->out_year,
             "location" => $this->location,
-            "description" => Str::limit($this->description, 50, '...'),
+            "status" => $this->status,
+            "description" => $this->description,
             "picture" => $this->picture ? Storage::url($this->picture) : 'https://flowbite.com/docs/images/blog/image-1.jpg',
         ];
     }
