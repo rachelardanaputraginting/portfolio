@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
-use App\Models\Product;
-use App\Http\Resources\ProductResource;
+use App\Http\Requests\AchievementRequest;
+use App\Http\Resources\AchievementResource;
+use App\Models\Achievement;
 use Illuminate\Support\Facades\Storage;
 
-class AdminProductController extends Controller
+class AdminAchievementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,12 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        $products = Product::query()
+        $Achievements = Achievement::query()
             ->select('title', 'slug', 'picture', 'user_id', 'link', 'description', 'id')
             ->latest()
             ->fastPaginate();
-        return inertia('Admin/Products/Index', [
-            "products" => ProductResource::collection($products),
+        return inertia('Admin/Achievements/Index', [
+            "Achievements" => AchievementResource::collection($Achievements),
         ]);
     }
 
@@ -32,7 +32,7 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        return inertia('Admin/Products/Create');
+        return inertia('Admin/Achievements/Create');
     }
 
     /**
@@ -41,27 +41,27 @@ class AdminProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(AchievementRequest $request)
     {
         $picture = $request->file('picture');
-        $request->user()->products()->create([
+        $request->user()->achievements()->create([
             "title" => $title = $request->title,
             "slug" => $slug = str($title)->slug(),
             "link" => $request->link,
             "description" => $request->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/products', $slug . '.' . $picture->extension()) : null
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/Achievements', $slug . '.' . $picture->extension()) : null
         ]);
 
-        return to_route('admin.products.index');
+        return to_route('admin.Achievements.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Achievement $achievement)
     {
         //
     }
@@ -69,13 +69,13 @@ class AdminProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Achievement $achievement)
     {
-        return inertia('Admin/Products/Edit', [
-            "product" => $product
+        return inertia('Admin/Achievements/Edit', [
+            "achievement" => $achievement
         ]);
     }
 
@@ -83,36 +83,36 @@ class AdminProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(AchievementRequest $request, Achievement $achievement)
     {
         $picture = $request->file('picture');
-        $product->update([
-            "title" => $title = $request->title ? $request->title : $product->title,
+        $achievement->update([
+            "title" => $title = $request->title ? $request->title : $achievement->title,
             "slug" => str($title)->slug(),
-            "link" => $request->link ? $request->link : $product->link,
-            "description" => $request->description ? $request->description : $product->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $product->slug . '.' . $picture->extension()) : $product->picture
+            "link" => $request->link ? $request->link : $achievement->link,
+            "description" => $request->description ? $request->description : $achievement->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $achievement->slug . '.' . $picture->extension()) : $achievement->picture
         ]);
 
-        return to_route('admin.products.index');
+        return to_route('admin.Achievements.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Achievement $achievement)
     {
-        if ($product->picture) {
-            Storage::delete($product->picture);
+        if ($achievement->picture) {
+            Storage::delete($achievement->picture);
         }
 
-        $product->delete();
+        $achievement->delete();
         return back();
     }
 }
