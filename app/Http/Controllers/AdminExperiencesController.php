@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Experience;
 use Illuminate\Http\Request;
 
-class ExperienceController extends Controller
+class AdminExperiencesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,7 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        $experiences = Experience::all();
-        return inertia('Experiences/Index', [
-            "experiences" => $experiences,
-        ]);
+        //
     }
 
     /**
@@ -44,10 +41,10 @@ class ExperienceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Experience  $experiences
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function show(Experience $experiences)
+    public function show(Experience $experience)
     {
         //
     }
@@ -55,10 +52,10 @@ class ExperienceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Experience  $experiences
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function edit(Experience $experiences)
+    public function edit(Experience $experience)
     {
         //
     }
@@ -67,10 +64,10 @@ class ExperienceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Experience  $experiences
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Experience $experiences)
+    public function update(Request $request, Experience $experience)
     {
         //
     }
@@ -78,10 +75,10 @@ class ExperienceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Experience  $experiences
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Experience $experiences)
+    public function destroy(Experience $experience)
     {
         //
     }

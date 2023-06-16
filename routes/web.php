@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSkillController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
-use App\Http\Controllers\ExperiencesController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -60,6 +60,15 @@ Route::middleware('auth')->group(function () {
         Route::put('/admin/skills/{skill:slug}', 'update')->name('admin.skills.update');
     });
 
+    // Experiences
+    Route::controller(AdminExperienceController::class)->group(function () {
+        Route::get('/admin/experiences', 'index')->name('admin.experiences.index');
+        Route::get('/admin/experiences/create', 'create')->name('admin.experiences.create');
+        Route::delete('/admin/experiences/{experience:slug}', 'destroy')->name('admin.experiences.destroy');
+        Route::post('/admin/experiences', 'store')->name('admin.experiences.store');
+        Route::get('/admin/experiences/{experience:slug}/edit', 'edit')->name('admin.experiences.edit');
+        Route::put('/admin/experiences/{experience:slug}', 'update')->name('admin.experiences.update');
+    });
 
 });
 
