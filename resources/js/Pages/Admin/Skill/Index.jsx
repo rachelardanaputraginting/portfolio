@@ -80,6 +80,7 @@ export default function Index(props) {
                         </tr>
                     </Table.Thead>
                     <Table.Tbody>
+                        {skills.length > 0 ? <>
                         {skills.map((skill, i) => (
                             <>
                                 <tr key={skill.id}>
@@ -115,6 +116,11 @@ export default function Index(props) {
 
                             </>
                         ))}
+                         </> :
+                            <tr>
+                                <td colSpan={6} className='text-center text-third text-sm'>Data is still empty at this time</td>
+                            </tr>
+                         }
                     </Table.Tbody >
                 </Table>
                 <Pagination meta={meta} links={links} />
