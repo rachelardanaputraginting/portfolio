@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Achievement;
-use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
+use App\Models\Product;
+use App\Http\Resources\ProductResource;
+use Illuminate\Support\Facades\Storage;
 
-class AchievementController extends Controller
+class AdminProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +16,12 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        $achievements = Achievement::all();
-
-        return inertia('Achievements/Index', [
-            "achievements" => $achievements
+        $products = Product::query()
+            ->select('title', 'slug', 'picture', 'user_id', 'link', 'description', 'id')
+            ->latest()
+            ->fastPaginate();
+        return inertia('Admin/Products/Index', [
+            "products" => ProductResource::collection($products),
         ]);
     }
 
@@ -28,7 +32,7 @@ class AchievementController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Admin/Products/Create');
     }
 
     /**
@@ -37,18 +41,27 @@ class AchievementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $picture = $request->file('picture');
+        $request->user()->products()->create([
+            "title" => $title = $request->title,
+            "slug" => $slug = str($title)->slug(),
+            "link" => $request->link,
+            "description" => $request->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/products', $slug . '.' . $picture->extension()) : null
+        ]);
+
+        return to_route('admin.products.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Achievement  $achievement
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Achievement $achievement)
+    public function show(Product $product)
     {
         //
     }
@@ -56,34 +69,50 @@ class AchievementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Achievement  $achievement
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Achievement $achievement)
+    public function edit(Product $product)
     {
-        //
+        return inertia('Admin/Products/Edit', [
+            "product" => $product
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Achievement  $achievement
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Achievement $achievement)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $picture = $request->file('picture');
+        $product->update([
+            "title" => $title = $request->title ? $request->title : $product->title,
+            "slug" => str($title)->slug(),
+            "link" => $request->link ? $request->link : $product->link,
+            "description" => $request->description ? $request->description : $product->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $product->slug . '.' . $picture->extension()) : $product->picture
+        ]);
+
+        return to_route('admin.products.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Achievement  $achievement
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Achievement $achievement)
+    public function destroy(Product $product)
     {
-        //
+        if ($product->picture) {
+            Storage::delete($product->picture);
+        }
+
+        $product->delete();
+        return back();
     }
 }
