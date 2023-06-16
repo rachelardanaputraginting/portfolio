@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Achievement;
-use Illuminate\Http\Request;
+use App\Http\Resources\AchievementResource;
+use Illuminate\Support\Facades\Storage;
 
 class AdminAchievementController extends Controller
 {
@@ -14,7 +16,13 @@ class AdminAchievementController extends Controller
      */
     public function index()
     {
-        //
+        $achievement = Achievement::query()
+            ->select('title', 'slug', 'ranking', 'user_id', 'description', 'year', 'location', 'division', 'id')
+            ->latest()
+            ->fastPaginate();
+        return inertia('Admin/Achievements/Index', [
+            "achievements" => AchievementResource::collection($achievement),
+        ]);
     }
 
     /**
@@ -24,7 +32,7 @@ class AdminAchievementController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Admin/Achievements/Create');
     }
 
     /**
@@ -33,9 +41,18 @@ class AdminAchievementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $picture = $request->file('picture');
+        $request->user()->achievements()->create([
+            "title" => $title = $request->title,
+            "slug" => $slug = str($title)->slug(),
+            "link" => $request->link,
+            "description" => $request->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/achievements', $slug . '.' . $picture->extension()) : null
+        ]);
+
+        return to_route('admin.achievements.index');
     }
 
     /**
@@ -57,7 +74,9 @@ class AdminAchievementController extends Controller
      */
     public function edit(Achievement $achievement)
     {
-        //
+        return inertia('Admin/Achievements/Edit', [
+            "achie$achievement" => $achievement
+        ]);
     }
 
     /**
@@ -67,9 +86,18 @@ class AdminAchievementController extends Controller
      * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Achievement $achievement)
+    public function update(ProductRequest $request, Achievement $achievement)
     {
-        //
+        $picture = $request->file('picture');
+        $achievement->update([
+            "title" => $title = $request->title ? $request->title : $achievement->title,
+            "slug" => str($title)->slug(),
+            "link" => $request->link ? $request->link : $achievement->link,
+            "description" => $request->description ? $request->description : $achievement->description,
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $achievement->slug . '.' . $picture->extension()) : $achievement->picture
+        ]);
+
+        return to_route('admin.achievements.index');
     }
 
     /**
@@ -80,6 +108,11 @@ class AdminAchievementController extends Controller
      */
     public function destroy(Achievement $achievement)
     {
-        //
+        if ($achievement->picture) {
+            Storage::delete($achievement->picture);
+        }
+
+        $achievement->delete();
+        return back();
     }
 }

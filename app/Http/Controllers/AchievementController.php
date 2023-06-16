@@ -7,7 +7,7 @@ use App\Http\Resources\AchievementResource;
 use App\Models\Achievement;
 use Illuminate\Support\Facades\Storage;
 
-class AdminAchievementController extends Controller
+class AchievementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,9 @@ class AdminAchievementController extends Controller
      */
     public function index()
     {
-        $Achievements = Achievement::query()
-            ->select('title', 'slug', 'picture', 'user_id', 'link', 'description', 'id')
-            ->latest()
-            ->fastPaginate();
-        return inertia('Admin/Achievements/Index', [
-            "Achievements" => AchievementResource::collection($Achievements),
+        $achievements = Achievement::all();
+        return inertia('Achievements/Index', [
+            "achievements" => $achievements,
         ]);
     }
 
@@ -47,7 +44,7 @@ class AdminAchievementController extends Controller
         $request->user()->achievements()->create([
             "title" => $title = $request->title,
             "slug" => $slug = str($title)->slug(),
-            "link" => $request->link,
+            "ranking" => $request->ranking,
             "description" => $request->description,
             "picture" => $request->hasFile('picture') ? $picture->storeAs('images/Achievements', $slug . '.' . $picture->extension()) : null
         ]);
@@ -92,7 +89,7 @@ class AdminAchievementController extends Controller
         $achievement->update([
             "title" => $title = $request->title ? $request->title : $achievement->title,
             "slug" => str($title)->slug(),
-            "link" => $request->link ? $request->link : $achievement->link,
+            "ranking" => $request->ranking ? $request->ranking : $achievement->ranking,
             "description" => $request->description ? $request->description : $achievement->description,
             "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $achievement->slug . '.' . $picture->extension()) : $achievement->picture
         ]);

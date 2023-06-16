@@ -4,6 +4,7 @@ use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\AdminEducationController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminExperienceController;
+use App\Http\Controllers\AdminAchievementController;
 use App\Http\Controllers\AdminSkillController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
@@ -69,6 +70,16 @@ Route::middleware('auth')->group(function () {
         Route::post('/admin/experiences', 'store')->name('admin.experiences.store');
         Route::get('/admin/experiences/{experience:slug}/edit', 'edit')->name('admin.experiences.edit');
         Route::put('/admin/experiences/{experience:slug}', 'update')->name('admin.experiences.update');
+    });
+
+    // Experiences
+    Route::controller(AdminAchievementController::class)->group(function () {
+        Route::get('/admin/achievements', 'index')->name('admin.achievements.index');
+        Route::get('/admin/achievements/create', 'create')->name('admin.achievements.create');
+        Route::delete('/admin/achievements/{achievement:slug}', 'destroy')->name('admin.achievements.destroy');
+        Route::post('/admin/achievements', 'store')->name('admin.achievements.store');
+        Route::get('/admin/achievements/{achievement:slug}/edit', 'edit')->name('admin.achievements.edit');
+        Route::put('/admin/achievements/{achievement:slug}', 'update')->name('admin.achievements.update');
     });
 
 });
