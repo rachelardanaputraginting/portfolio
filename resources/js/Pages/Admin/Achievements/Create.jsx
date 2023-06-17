@@ -1,37 +1,35 @@
 import React from 'react';
 import { Head, useForm } from '@inertiajs/react';
 import App from '@/Layouts/App';
-import ExperienceForm from '@/Components/ExperienceForm';
+import AchievementForm from '@/Components/AchievementForm';
 import PrimaryButton from '@/Components/PrimaryButton';
 import Container from '@/Components/Container';
 import { toast } from 'react-hot-toast';
 
 export default function Create(props) {
     const { post, data, setData } = useForm({
-        name: '',
-        position: '',
-        entry_year: '',
-        out_year: '',
+        title: '',
+        ranking: '',
+        year: '',
         location: '',
-        status: '',
+        division: '',
         description: '',
-        picture: '',
     })
 
     const onSubmit = (e) => {
         e.preventDefault();
-        post(route('admin.experiences.store'), {
+        post(route('admin.achievements.store'), {
             ...data,
-            onSuccess: () => toast.success('Experience has been added!')
+            onSuccess: () => toast.success('Achievement has been added!')
         })
     }
 
     return (
         <>
-            <Head title="Add Experience" />
+            <Head title="Add Achievement" />
             <Container>
                 <form onSubmit={onSubmit} className='mt-12'>
-                    <ExperienceForm {...{ data, setData }} />
+                    <AchievementForm {...{ data, setData }} />
                     <PrimaryButton>Create</PrimaryButton>
                 </form>
             </Container>

@@ -13,7 +13,7 @@ class AchievementRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class AchievementRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "title" => ['required', 'string', 'min:3'],
+            "ranking" => ['numeric', 'required', 'string', 'min:3'],
+            "year" => ['required', 'min:3'],
+            "location" => ['required', 'string', 'min:3'],
+            "division" => ['required', 'string', 'min:3'],
+            "description" => ['required', 'string', 'min:3'],
         ];
     }
 }

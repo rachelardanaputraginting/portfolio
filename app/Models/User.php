@@ -52,11 +52,18 @@ class User extends Authenticatable
         return $this->hasMany(Education::class);
     }
 
-    public function skills() {
+    public function skills()
+    {
         return $this->hasMany(Skill::class);
     }
 
-    public function experiences() {
+    public function experiences()
+    {
         return $this->hasMany(Experience::class);
+    }
+
+    public function achievements()
+    {
+        return $this->hasMany(Achievement::class);
     }
 }

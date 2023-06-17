@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class AchievementResource extends JsonResource
 {
@@ -14,6 +15,14 @@ class AchievementResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            "title" => $title =  $this->title,
+            "slug" => Str::slug($title),
+            "ranking" => $this->ranking,
+            "year" => $this->year,
+            "location" => $this->location,
+            "division" => $this->division
+        ];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\AchievementRequest;
 use App\Models\Achievement;
 use App\Http\Resources\AchievementResource;
 use Illuminate\Support\Facades\Storage;
@@ -41,15 +41,16 @@ class AdminAchievementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(AchievementRequest $request)
     {
-        $picture = $request->file('picture');
         $request->user()->achievements()->create([
             "title" => $title = $request->title,
             "slug" => $slug = str($title)->slug(),
-            "link" => $request->link,
+            "ranking" => $request->ranking,
+            "year" => $request->year,
+            "location" => $request->location,
+            "division" => $request->division,
             "description" => $request->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/achievements', $slug . '.' . $picture->extension()) : null
         ]);
 
         return to_route('admin.achievements.index');
@@ -86,7 +87,7 @@ class AdminAchievementController extends Controller
      * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Achievement $achievement)
+    public function update(AchievementResource $request, Achievement $achievement)
     {
         $picture = $request->file('picture');
         $achievement->update([
