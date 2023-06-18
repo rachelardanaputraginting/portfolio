@@ -189,5 +189,43 @@ class DatabaseSeeder extends Seeder
             'level' => 3,
             'icon' => '<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-php" width={24} height={24} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">         <path stroke="none" d="M0 0h24v24H0z" fill="none" />         <path d="M12 12m-10 0a10 9 0 1 0 20 0a10 9 0 1 0 -20 0" />         <path d="M5.5 15l.395 -1.974l.605 -3.026h1.32a1 1 0 0 1 .986 1.164l-.167 1a1 1 0 0 1 -.986 .836h-1.653" />         <path d="M15.5 15l.395 -1.974l.605 -3.026h1.32a1 1 0 0 1 .986 1.164l-.167 1a1 1 0 0 1 -.986 .836h-1.653" />         <path d="M12 7.5l-1 5.5" />         <path d="M11.6 10h2.4l-.5 3" />       </svg>'
         ]);
+        Skill::create([
+            'user_id' => 1,
+            'title' => 'Team Work',
+            'slug' => 'team-work',
+            'category' => 'soft',
+            'description' => 'Selain menguasai HTML, CSS, dan JavaScript, saya juga mahir dalam bahasa pemrograman PHP. Dengan pengetahuan dan keterampilan saya dalam PHP, saya dapat mengembangkan aplikasi web yang dinamis dan interaktif.
+
+            Sebagai seorang pengembang web yang mahir dalam PHP, saya memahami konsep dasar pemrograman seperti variabel, tipe data, pengulangan, pengkondisian, dan fungsi. Saya juga memiliki pemahaman yang kuat tentang manipulasi string, pengelolaan file, dan pengolahan formulir dalam PHP.
+
+            Saya dapat membuat koneksi ke database menggunakan PHP dan mengambil data dari database untuk ditampilkan dalam halaman web. Saya juga bisa menyimpan data yang dikirimkan oleh pengguna ke dalam database dan melakukan operasi CRUD (Create, Read, Update, Delete) pada data.
+
+            Dalam pengembangan web, saya menggunakan kerangka kerja PHP seperti Laravel atau CodeIgniter untuk mempercepat proses pengembangan dan memanfaatkan fitur-fitur yang tersedia dalam kerangka kerja tersebut.
+
+            Dengan kemahiran saya dalam PHP, saya dapat mengembangkan aplikasi web yang kompleks, seperti sistem manajemen konten (CMS), aplikasi e-commerce, atau aplikasi berbasis database lainnya.
+
+            Saya terus memperbarui pengetahuan saya tentang PHP dengan mengikuti perkembangan terbaru dalam bahasa ini dan selalu mencari cara untuk meningkatkan keterampilan pemrograman saya dalam PHP.',
+            'level' => 3,
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-php" width={24} height={24} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">         <path stroke="none" d="M0 0h24v24H0z" fill="none" />         <path d="M12 12m-10 0a10 9 0 1 0 20 0a10 9 0 1 0 -20 0" />         <path d="M5.5 15l.395 -1.974l.605 -3.026h1.32a1 1 0 0 1 .986 1.164l-.167 1a1 1 0 0 1 -.986 .836h-1.653" />         <path d="M15.5 15l.395 -1.974l.605 -3.026h1.32a1 1 0 0 1 .986 1.164l-.167 1a1 1 0 0 1 -.986 .836h-1.653" />         <path d="M12 7.5l-1 5.5" />         <path d="M11.6 10h2.4l-.5 3" />       </svg>'
+        ]);
+        Skill::create([
+            'user_id' => 1,
+            'title' => 'Public Speaking',
+            'slug' => 'public-speaking',
+            'category' => 'soft',
+            'description' => 'Selain menguasai HTML, CSS, dan JavaScript, saya juga mahir dalam bahasa pemrograman PHP. Dengan pengetahuan dan keterampilan saya dalam PHP, saya dapat mengembangkan aplikasi web yang dinamis dan interaktif.
+
+            Sebagai seorang pengembang web yang mahir dalam PHP, saya memahami konsep dasar pemrograman seperti variabel, tipe data, pengulangan, pengkondisian, dan fungsi. Saya juga memiliki pemahaman yang kuat tentang manipulasi string, pengelolaan file, dan pengolahan formulir dalam PHP.
+
+            Saya dapat membuat koneksi ke database menggunakan PHP dan mengambil data dari database untuk ditampilkan dalam halaman web. Saya juga bisa menyimpan data yang dikirimkan oleh pengguna ke dalam database dan melakukan operasi CRUD (Create, Read, Update, Delete) pada data.
+
+            Dalam pengembangan web, saya menggunakan kerangka kerja PHP seperti Laravel atau CodeIgniter untuk mempercepat proses pengembangan dan memanfaatkan fitur-fitur yang tersedia dalam kerangka kerja tersebut.
+
+            Dengan kemahiran saya dalam PHP, saya dapat mengembangkan aplikasi web yang kompleks, seperti sistem manajemen konten (CMS), aplikasi e-commerce, atau aplikasi berbasis database lainnya.
+
+            Saya terus memperbarui pengetahuan saya tentang PHP dengan mengikuti perkembangan terbaru dalam bahasa ini dan selalu mencari cara untuk meningkatkan keterampilan pemrograman saya dalam PHP.',
+            'level' => 3,
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-php" width={24} height={24} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">         <path stroke="none" d="M0 0h24v24H0z" fill="none" />         <path d="M12 12m-10 0a10 9 0 1 0 20 0a10 9 0 1 0 -20 0" />         <path d="M5.5 15l.395 -1.974l.605 -3.026h1.32a1 1 0 0 1 .986 1.164l-.167 1a1 1 0 0 1 -.986 .836h-1.653" />         <path d="M15.5 15l.395 -1.974l.605 -3.026h1.32a1 1 0 0 1 .986 1.164l-.167 1a1 1 0 0 1 -.986 .836h-1.653" />         <path d="M12 7.5l-1 5.5" />         <path d="M11.6 10h2.4l-.5 3" />       </svg>'
+        ]);
     }
 }

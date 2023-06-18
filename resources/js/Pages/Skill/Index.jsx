@@ -12,19 +12,24 @@ import Select from '@/Components/Select';
 import Error from '@/Components/Error';
 
 export default function Index({ hard_skills, soft_skills }) {
-    const limitedHardSkills = hard_skills.slice(0, 4);
-    const limitedSoftSkills = soft_skills.slice(0, 4);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuerySoft, setSearchQuerySoft] = useState('');
+    const filteredHardSkills = hard_skills.filter(skill =>
+        skill.title.toLowerCase().includes(searchQuery.toLowerCase())
+    ).slice(0, 4);;
+    const filteredSoftSkills = soft_skills.filter(skill =>
+        skill.title.toLowerCase().includes(searchQuerySoft.toLowerCase())
+    ).slice(0, 4);;
 
-    const { data, setData, errors } = useForm({
+    const { data, setData } = useForm({
         title: '',
         slug: '',
         level: '',
         description: ''
     })
 
-    let [isOpen, setIsOpen] = useState(false)
 
-    // const { data: skills, meta, links } = props.skills;
+    let [isOpen, setIsOpen] = useState(false)
 
     const show = (skill, event) => {
         event.preventDefault();
@@ -68,9 +73,15 @@ export default function Index({ hard_skills, soft_skills }) {
 
             <Container>
                 <div className='w-full flex justify-between items-center border-b mb-8 border-third gap-4'>
-                    <form action="" className='w-full'>
-                        <TextInput type="search" className="w-full" placeholder="Search skills" />
-                    </form>
+                    <div className='w-full'>
+                        <TextInput
+                            type="search"
+                            className="w-full"
+                            placeholder="Search hard skills"
+                            value={searchQuery}
+                            onChange={e => setSearchQuery(e.target.value)}
+                        />
+                    </div>
                     <div className="w-max flex justify-end gap-4 py-3">
 
                         <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -88,9 +99,9 @@ export default function Index({ hard_skills, soft_skills }) {
             </Container>
 
             <Container>
-                {limitedHardSkills.length > 0 ? <>
+                {filteredHardSkills.length > 0 ? <>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                        {limitedHardSkills.map(skill => (
+                        {filteredHardSkills.map(skill => (
                             <CardHorizontal icon={skill.icon} key={skill.id}>
                                 <CardHorizontal.Badge badge={skill.level.name} className={`${skill.level.color}`} />
                                 <CardHorizontal.Title title={skill.title} />
@@ -111,7 +122,13 @@ export default function Index({ hard_skills, soft_skills }) {
             <Container>
                 <div className='w-full flex justify-between items-center border-b mb-8 border-third gap-4'>
                     <div className='w-full flex gap-4'>
-                        <TextInput type="search" className="flex-auto w-full" placeholder="Search skills" />
+                    <TextInput
+                            type="search"
+                            className="w-full"
+                            placeholder="Search soft skills"
+                            value={searchQuerySoft}
+                            onChange={e => setSearchQuerySoft(e.target.value)}
+                        />
                     </div>
                     <div className="w-max flex justify-end gap-4 py-3">
                         <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -129,9 +146,9 @@ export default function Index({ hard_skills, soft_skills }) {
             </Container>
 
             <Container>
-                {limitedSoftSkills.length > 0 ? <>
+                {filteredSoftSkills.length > 0 ? <>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {limitedSoftSkills.map(skill => (
+                        {filteredSoftSkills.map(skill => (
                             <CardHorizontal icon={skill.icon} key={skill.id}>
                                 <CardHorizontal.Badge badge={skill.level.name} className={`${skill.level.color}`} />
                                 <CardHorizontal.Title title={skill.title} />

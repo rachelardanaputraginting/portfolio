@@ -20,7 +20,7 @@ Route::resource('products', ProductController::class);
 Route::resource('skills', SkillController::class);
 Route::resource('achievements', AchievementController::class);
 Route::resource('educations', EducationController::class);
-Route::resource('experiences', ExperiencesController::class);
+Route::resource('experiences', ExperienceController::class);
 
 
 Route::middleware('auth')->group(function () {

@@ -8,24 +8,37 @@ use Illuminate\Http\Request;
 
 class SkillController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $hard_skills = Skill::query()
+        $search_hard = $request->input('q');
+        if ($search_hard) {
+            $hard_skills = Skill::query()
+            ->where('category', 'hard')->where('title', 'LIKE', "%$search_hard%")
+            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
+            ->latest()
+            ->get();
+        } else {
+            $hard_skills = Skill::query()
             ->where('category', 'hard')
             ->select('id', 'title', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
+        }
 
-        $soft_skills = Skill::query()
+        $search_soft = $request->input('r');
+        if ($search_soft) {
+            $soft_skills = Skill::query()
+            ->where('category', 'soft')->where('title', 'LIKE', "%$search_soft%")
+            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
+            ->latest()
+            ->get();
+        } else {
+            $soft_skills = Skill::query()
             ->where('category', 'soft')
             ->select('id', 'title', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
+        }
 
         return inertia('Skill/Index', [
             "hard_skills" => SkillResource::collection($hard_skills),

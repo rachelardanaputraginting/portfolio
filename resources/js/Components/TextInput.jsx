@@ -14,7 +14,7 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
             <input
                 {...props}
                 type={type}
-                className={clsx('border-third text-third focus:border-third focus:secondary rounded-md shadow-sm bg-fourth', className)
+                className={clsx('border-third focus:border-third focus:bg-primary rounded-md shadow-sm bg-fourth', className)
                 }
                 ref={input}
             />
