@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::query()
+            ->select('title', 'slug', 'picture', 'user_id', 'link', 'description', 'id')
+            ->latest()
+            ->limit(4)
+            ->get();
         return inertia('Products/Index', [
-            "products" => $products
+            "products" => ProductResource::collection($products),
         ]);
     }
 

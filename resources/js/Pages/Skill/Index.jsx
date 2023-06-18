@@ -8,7 +8,7 @@ import CardHorizontal from '@/Components/CardHorizontal';
 import Title from '@/Components/Title';
 import Modal from '@/Components/Modal';
 
-export default function Index(props) {
+export default function Index({ skills }) {
     const { data, setData } = useForm({
         title: '',
         slug: '',
@@ -18,7 +18,7 @@ export default function Index(props) {
 
     let [isOpen, setIsOpen] = useState(false)
 
-    const { data: skills, meta, links } = props.skills;
+    // const { data: skills, meta, links } = props.skills;
 
     const show = (skill, event) => {
         event.preventDefault();
@@ -28,13 +28,12 @@ export default function Index(props) {
 
     const onClose = () => {
         setIsOpen(false);
-      };
+    };
 
     return (
         <>
-
             <Modal show={isOpen} onClose={setIsOpen}>
-            <div className="mt-2 text-third flex w-1/4" dangerouslySetInnerHTML={{ __html: data.icon }} />
+                <div className="mt-2 text-third flex w-1/4" dangerouslySetInnerHTML={{ __html: data.icon }} />
                 <Modal.Title title={data.title} />
                 <p className='px-3 text-sm py-1 bg-green-600 to-fifth flex items-center gap-2 max-w-max rounded m-4'>{data.level.name}</p>
                 <Modal.Description description={data.description} />
@@ -61,27 +60,30 @@ export default function Index(props) {
                 <Title title="Skills" subtitle="Here are some of my abilities in the field of Web Developer" />
             </Container>
 
-        {skills.length > 4 ?
-            <Container>
-            <Link href={`#`} className='flex mb-2 justify-end text-sm items-center mr-1 gap-2 font-light text-secondary hover:text-red-500'>View all <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="font-bold w-4 h-4">
-                < path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-            </Link >
-            </Container>
+            {skills.length > 4 ?
+                <Container>
+                    <Link href={`#`} className='flex mb-2 justify-end text-sm items-center mr-1 gap-2 font-light text-secondary hover:text-red-500'>View all <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="font-bold w-4 h-4">
+                        < path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                    </Link >
+                </Container>
                 : null}
 
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {skills.map(skill => (
-                        <CardHorizontal icon={skill.icon} key={skill.id}>
-                            <CardHorizontal.Badge badge={skill.level.name} className="bg-red-500" />
-                            <CardHorizontal.Title title={skill.title} />
-                            <CardHorizontal.Description description={skill.description} />
-                            <button type="button" onClick={(event) => show(skill, event)} className='flex justify-end ml-auto mr-4 items-center gap-2 w-max text-secondary hover:text-fifth'> Read More
-                                        </button>
-                        </CardHorizontal >
-                    ))}
-                </div>
+                {skills.length > 0 ? <>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {skills.map(skill => (
+                            <CardHorizontal icon={skill.icon} key={skill.id}>
+                                <CardHorizontal.Badge badge={skill.level.name} className="bg-red-500" />
+                                <CardHorizontal.Title title={skill.title} />
+                                <CardHorizontal.Description description={skill.description} />
+                                <button type="button" onClick={(event) => show(skill, event)} className='flex justify-end ml-auto mr-4 items-center gap-2 w-max text-secondary hover:text-fifth'> Read More
+                                </button>
+                            </CardHorizontal >
+                        ))}
+                    </div>
+                </>
+                    : <div className='text-sm text-center text-third font-light'>Data is still empty at this time</div>}
             </Container >
         </>
     );
