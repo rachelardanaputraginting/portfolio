@@ -82,8 +82,8 @@ export default function Index(props) {
                         {skills.map((skill, i) => (
                             <>
                                 <tr key={skill.id}>
-                                    <Table.Td>{i + meta.from}</Table.Td>
-                                    <Table.Td><div className="mx-auto mt-2 text-third flex text-center w-16" dangerouslySetInnerHTML={{ __html: skill.icon }} /></Table.Td>
+                                    <Table.Td className='w-6'>{i + meta.from}</Table.Td>
+                                    <Table.Td className='w-12'><div className="mx-auto mt-2 text-third flex text-center w-16" dangerouslySetInnerHTML={{ __html: skill.icon }} /></Table.Td>
                                     <Table.Td>{skill.title}</Table.Td>
                                     <Table.Td>
                                         {skill.level.name}

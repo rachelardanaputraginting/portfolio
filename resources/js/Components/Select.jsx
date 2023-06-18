@@ -10,8 +10,10 @@ export default function Select({ data, value, onChange, placeholder = 'Select on
         level = "Beginner"
     }else if (value == 2) {
         level = "Intermediate"
-    } else {
-        level = value.name
+    } else if(value == 3){
+        level = "Advanced"
+    }else {
+        level = "Learning"
     }
 
     return (
