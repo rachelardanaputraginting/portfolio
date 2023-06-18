@@ -32,7 +32,7 @@ class SkillResource extends JsonResource
                 "name" => $level
             ],
             "icon" => $this->icon,
-            "description" => Str::limit($this->description, 50, '...')
+            "description" => $this->description
         ];
     }
 }

@@ -22,7 +22,8 @@ class AchievementResource extends JsonResource
             "ranking" => $this->ranking,
             "year" => $this->year,
             "location" => $this->location,
-            "division" => $this->division
+            "division" => $this->division,
+            "description" => $this->description
         ];
     }
 }

@@ -10,7 +10,7 @@ import Pagination from '@/Components/Pagination';
 import useSwal from '@/Hooks/useSwal';
 import Modal from '@/Components/Modal';
 
-export default function Index(props) {
+export default function Index() {
     const { ask } = useSwal();
 
     const { data, setData } = useForm({

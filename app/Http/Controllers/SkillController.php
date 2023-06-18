@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SkillResource;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,12 @@ class SkillController extends Controller
      */
     public function index()
     {
-        // return 'Hai';
-        $skills = Skill::all();
+        $skills = Skill::query()
+            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
+            ->latest()
+            ->fastPaginate();
         return inertia('Skill/Index', [
-            "skills" => $skills,
+            "skills" => SkillResource::collection($skills),
         ]);
     }
 

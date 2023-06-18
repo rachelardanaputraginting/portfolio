@@ -6,7 +6,7 @@ function CardHorizontal({ icon, children, className, src, rank }) {
     return (
         <Link href="#" className="w-full flex items-start bg-gradient-to-r from-fifth rounded-lg shadow md:flex-row md:max-w-xl hover:bg-primary dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
             <div className="w-1/3">
-                <div className={clsx('mx-auto mt-2 text-third flex text-center', className)} dangerouslySetInnerHTML={{ __html: icon }} />
+                <div className={clsx('mx-auto mt-2 text-third w-3/4 flex text-center', className)} dangerouslySetInnerHTML={{ __html: icon }} />
                 <h1 className='text-[130px] font-bold font-mono text-center mx-auto flex text-third'>{rank}</h1>
                 <img src={src} width='120' className='mt-4 mx-auto flex text-center' />
             </div>
@@ -31,7 +31,7 @@ function Badge({ badge, className }) {
 
 function Description({ description }) {
     return (
-        <p className="mb-3 text-third font-light text-sm dark:text-gray-400 line-clamp-3">{description}</p>
+        <p className="mb-3 text-third font-light text-sm dark:text-gray-400 line-clamp-3 pr-4">{description}</p>
     )
 }
 
@@ -61,8 +61,17 @@ function Footer({ year, location, position }) {
     )
 }
 
+function Detail({link, href}) {
+return (
+    <Link className='rounded mt-1 text-secondary hover:text-fifth ml-auto mr-4 text-sm' href={href}>{link}</Link>
+    )
+}
+
+
+
 CardHorizontal.Title = Title;
 CardHorizontal.Badge = Badge;
 CardHorizontal.Description = Description;
 CardHorizontal.Footer = Footer;
+CardHorizontal.Detail = Detail;
 export default CardHorizontal;

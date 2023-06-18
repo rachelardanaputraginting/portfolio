@@ -25,7 +25,7 @@ class AchievementRequest extends FormRequest
     {
         return [
             "title" => ['required', 'string', 'min:3'],
-            "ranking" => ['numeric', 'required', 'string', 'min:3'],
+            "ranking" => ['numeric', 'required', 'string', 'min:1'],
             "year" => ['required', 'min:3'],
             "location" => ['required', 'string', 'min:3'],
             "division" => ['required', 'string', 'min:3'],

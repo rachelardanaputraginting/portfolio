@@ -76,7 +76,7 @@ class AdminAchievementController extends Controller
     public function edit(Achievement $achievement)
     {
         return inertia('Admin/Achievements/Edit', [
-            "achie$achievement" => $achievement
+            "achievement" => $achievement
         ]);
     }
 
@@ -87,15 +87,17 @@ class AdminAchievementController extends Controller
      * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function update(AchievementResource $request, Achievement $achievement)
+    public function update(AchievementRequest $request, Achievement $achievement)
     {
         $picture = $request->file('picture');
         $achievement->update([
             "title" => $title = $request->title ? $request->title : $achievement->title,
             "slug" => str($title)->slug(),
-            "link" => $request->link ? $request->link : $achievement->link,
-            "description" => $request->description ? $request->description : $achievement->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $achievement->slug . '.' . $picture->extension()) : $achievement->picture
+            "ranking" => $request->ranking ? $request->ranking : $achievement->ranking,
+            "year" => $request->year ? $request->year : $achievement->year,
+            "location" => $request->location ? $request->location : $achievement->location,
+            "division" => $request->division ? $request->division : $achievement->division,
+            "description" => $request->description ? $request->description : $achievement->description
         ]);
 
         return to_route('admin.achievements.index');
