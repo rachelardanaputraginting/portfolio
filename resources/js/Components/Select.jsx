@@ -13,7 +13,7 @@ export default function Select({ data, value, onChange, placeholder = 'Select on
     } else if(value == 3){
         level = "Advanced"
     }else {
-        level = "Learning"
+        level = "Select one"
     }
 
     return (
@@ -27,7 +27,7 @@ export default function Select({ data, value, onChange, placeholder = 'Select on
             }}
             open={isOpen}
         >
-            <Listbox.Button className="flex h-11 w-full items-center justify-between gap-x-2 rounded-lg border px-3 focus:outline-none">
+            <Listbox.Button className="flex h-11 items-center justify-between gap-x-2 rounded-lg border px-3 focus:outline-none">
                 <span className="capitalize line-clamp-1 text-third">{level || placeholder}</span>
                 <div onClick={() => setIsOpen(!isOpen)}>
                     <svg

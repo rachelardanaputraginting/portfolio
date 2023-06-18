@@ -4,8 +4,6 @@ import Error from './Error'
 import Textarea from './Textarea'
 import { usePage } from '@inertiajs/react'
 import TextInput from './TextInput'
-import clsx from 'clsx'
-import { Listbox } from '@headlessui/react'
 import Select from './Select'
 
 export default function SkillForm({ data, setData }) {
@@ -14,15 +12,16 @@ export default function SkillForm({ data, setData }) {
     const levels = [
         {
             id: 1,
-            name: "Beginner",
+            name: "Beginner"
+
         },
         {
             id: 2,
-            name: "Intermediate",
+            name: "Intermediate"
         },
         {
             id: 3,
-            name: "Advanced",
+            name: "Advanced"
         }
     ];
 

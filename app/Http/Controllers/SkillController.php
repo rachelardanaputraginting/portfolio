@@ -18,7 +18,6 @@ class SkillController extends Controller
         $skills = Skill::query()
             ->select('id', 'title', 'slug', 'icon', 'level', 'description')
             ->latest()
-            ->limit(4)
             ->get();
         return inertia('Skill/Index', [
             "skills" => SkillResource::collection($skills),

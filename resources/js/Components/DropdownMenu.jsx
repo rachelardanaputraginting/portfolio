@@ -56,7 +56,7 @@ function Links({ isActive = false, children, ...props }) {
     return (
         <Menu.Item>
             {({ active }) => (
-                <Link className="block w-full text-left" {...props}>
+                <Link className="flex items-center w-full text-left" {...props}>
                     <div
                         className={clsx(
                             (active || isActive) ? 'bg-fifth text-third' : 'text-third',
