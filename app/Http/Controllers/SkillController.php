@@ -15,12 +15,21 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $skills = Skill::query()
+        $hard_skills = Skill::query()
+            ->where('category', 'hard')
             ->select('id', 'title', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
+
+        $soft_skills = Skill::query()
+            ->where('category', 'soft')
+            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
+            ->latest()
+            ->get();
+
         return inertia('Skill/Index', [
-            "skills" => SkillResource::collection($skills),
+            "hard_skills" => SkillResource::collection($hard_skills),
+            "soft_skills" => SkillResource::collection($soft_skills),
         ]);
     }
 

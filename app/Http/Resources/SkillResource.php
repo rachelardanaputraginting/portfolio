@@ -30,6 +30,7 @@ class SkillResource extends JsonResource
             "id" => $this->id,
             "title" => $title =  $this->title,
             "slug" => Str::slug($title),
+            "category" => $this->category,
             "level" => [
                 "id" => $this->level,
                 "name" => $level,

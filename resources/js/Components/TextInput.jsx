@@ -11,7 +11,6 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
     }, []);
 
     return (
-        <div className="flex flex-col items-start">
             <input
                 {...props}
                 type={type}
@@ -19,6 +18,5 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
                 }
                 ref={input}
             />
-        </div>
     );
 });

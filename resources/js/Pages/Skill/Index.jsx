@@ -11,8 +11,9 @@ import TextInput from '@/Components/TextInput';
 import Select from '@/Components/Select';
 import Error from '@/Components/Error';
 
-export default function Index({ skills }) {
-    const limitedSkills = skills.slice(0, 4);
+export default function Index({ hard_skills, soft_skills }) {
+    const limitedHardSkills = hard_skills.slice(0, 4);
+    const limitedSoftSkills = soft_skills.slice(0, 4);
 
     const { data, setData, errors } = useForm({
         title: '',
@@ -74,8 +75,8 @@ export default function Index({ skills }) {
 
                         <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                        </svg>{skills.length}</span>
-                        {skills.length > 4 ?
+                        </svg>{hard_skills.length}</span>
+                        {hard_skills.length > 4 ?
                             <Link href={`#`} className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'>
                                 All <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="font-bold w-4 h-4">
                                     < path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -87,9 +88,9 @@ export default function Index({ skills }) {
             </Container>
 
             <Container>
-                {limitedSkills.length > 0 ? <>
+                {limitedHardSkills.length > 0 ? <>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                        {limitedSkills.map(skill => (
+                        {limitedHardSkills.map(skill => (
                             <CardHorizontal icon={skill.icon} key={skill.id}>
                                 <CardHorizontal.Badge badge={skill.level.name} className={`${skill.level.color}`} />
                                 <CardHorizontal.Title title={skill.title} />
@@ -109,15 +110,14 @@ export default function Index({ skills }) {
 
             <Container>
                 <div className='w-full flex justify-between items-center border-b mb-8 border-third gap-4'>
-                    <form action="" className='w-full'>
-                        <TextInput type="search" className="w-full" placeholder="Search skills" />
-                    </form>
+                    <div className='w-full flex gap-4'>
+                        <TextInput type="search" className="flex-auto w-full" placeholder="Search skills" />
+                    </div>
                     <div className="w-max flex justify-end gap-4 py-3">
-
                         <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                        </svg>{skills.length}</span>
-                        {skills.length > 4 ?
+                        </svg>{soft_skills.length}</span>
+                        {soft_skills.length > 4 ?
                             <Link href={`#`} className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'>
                                 All <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="font-bold w-4 h-4">
                                     < path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -129,9 +129,9 @@ export default function Index({ skills }) {
             </Container>
 
             <Container>
-                {limitedSkills.length > 0 ? <>
+                {limitedSoftSkills.length > 0 ? <>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {limitedSkills.map(skill => (
+                        {limitedSoftSkills.map(skill => (
                             <CardHorizontal icon={skill.icon} key={skill.id}>
                                 <CardHorizontal.Badge badge={skill.level.name} className={`${skill.level.color}`} />
                                 <CardHorizontal.Title title={skill.title} />
