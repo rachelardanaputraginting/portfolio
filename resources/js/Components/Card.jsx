@@ -53,5 +53,4 @@ function Button({ href1, href2 }) {
 
 Card.Title = Title;
 Card.Subtitle = Subtitle;
-Card.Button = Button;
 export default Card;

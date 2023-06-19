@@ -23,7 +23,7 @@ class ProductResource extends JsonResource
             "slug" => Str::slug($title),
             "link" => $this->link,
             "status" => str($this->status)->ucfirst(),
-            "description" => Str::limit($this->description, 50, '...'),
+            "description" => $this->description,
             "picture" => $this->picture ? Storage::url($this->picture) : 'https://flowbite.com/docs/images/blog/image-1.jpg',
 
         ];

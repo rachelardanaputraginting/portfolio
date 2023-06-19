@@ -8,37 +8,19 @@ use Illuminate\Http\Request;
 
 class SkillController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $search_hard = $request->input('q');
-        if ($search_hard) {
-            $hard_skills = Skill::query()
-            ->where('category', 'hard')->where('title', 'LIKE', "%$search_hard%")
-            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
-            ->latest()
-            ->get();
-        } else {
             $hard_skills = Skill::query()
             ->where('category', 'hard')
             ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
-        }
 
-        $search_soft = $request->input('r');
-        if ($search_soft) {
-            $soft_skills = Skill::query()
-            ->where('category', 'soft')->where('title', 'LIKE', "%$search_soft%")
-            ->select('id', 'title','category', 'slug', 'icon', 'level', 'description')
-            ->latest()
-            ->get();
-        } else {
             $soft_skills = Skill::query()
             ->where('category', 'soft')
             ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
-        }
 
         // return SkillResource::collection($hard_skills);
         return inertia('Skill/Index', [
