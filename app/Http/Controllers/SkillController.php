@@ -47,69 +47,26 @@ class SkillController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function hardall(Request $request)
     {
-        //
-    }
+        $search_hard = $request->input('query');
+        if ($search_hard) {
+            $hard_skills = Skill::query()
+            ->where('category', 'hard')->where('title', 'LIKE', "%$search_hard%")
+            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
+            ->latest()
+            ->fastPaginate(4)->withQueryString();
+        } else {
+            $hard_skills = Skill::query()
+            ->where('category', 'hard')
+            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
+            ->latest()
+            ->fastPaginate(4)->withQueryString();
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Skill  $skill
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Skill $skill)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Skill  $skill
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Skill $skill)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Skill  $skill
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Skill $skill)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Skill  $skill
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Skill $skill)
-    {
-        //
+        // return SkillResource::collection($hard_skills);
+        return inertia('Skill/HardAll', [
+            "hard_skills" => SkillResource::collection($hard_skills),
+        ]);
     }
 }

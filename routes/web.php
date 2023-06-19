@@ -16,7 +16,10 @@ use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::resource('products', ProductController::class);
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/all', [ProductController::class, 'all'])->name('products.all');
+Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');
+Route::get('/skills/hard_skills', [SkillController::class, 'hardall'])->name('skills.hardall');
 Route::resource('skills', SkillController::class);
 Route::resource('achievements', AchievementController::class);
 Route::resource('educations', EducationController::class);

@@ -104,8 +104,8 @@ function PaginateLink({ active, href, children }) {
         <li>
             <Link
                 className={clsx(
-                    active && 'text-secondary border-blue-300 bg-fourth',
-                    'w-11 h-9 text-sm font-semibold rounded shadow-sm border border-fifth flex items-center justify-center'
+                    active && 'text-red-500 border-red-500 bg-fourth',
+                    'w-11 h-9 text-sm font-semibold rounded shadow-sm border border-fifth text-third flex items-center justify-center'
                 )}
                 href={href}
                 preserveScroll
