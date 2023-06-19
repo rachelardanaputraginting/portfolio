@@ -64,9 +64,12 @@ class SkillController extends Controller
             ->fastPaginate(4)->withQueryString();
         }
 
+        $count_hard_skill = Skill::where('category', 'hard')->count();
+
         // return SkillResource::collection($hard_skills);
         return inertia('Skill/HardAll', [
             "hard_skills" => SkillResource::collection($hard_skills),
+            "count_hard_skill" => $count_hard_skill,
         ]);
     }
 }

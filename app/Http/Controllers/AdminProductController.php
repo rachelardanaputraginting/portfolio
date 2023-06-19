@@ -94,7 +94,7 @@ class AdminProductController extends Controller
             "slug" => str($title)->slug(),
             "link" => $request->link ? $request->link : $product->link,
             "description" => $request->description ? $request->description : $product->description,
-            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/articles', $product->slug . '.' . $picture->extension()) : $product->picture
+            "picture" => $request->hasFile('picture') ? $picture->storeAs('images/products', $product->slug . '.' . $picture->extension()) : $product->picture
         ]);
 
         return to_route('admin.products.index');

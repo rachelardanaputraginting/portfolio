@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react'
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, useForm, usePage } from '@inertiajs/react';
 import Container from '@/Components/Container';
 import App from '@/Layouts/App';
 import Navigation from '@/Components/Navigation';
@@ -9,8 +9,11 @@ import Title from '@/Components/Title';
 import Modal from '@/Components/Modal';
 import TextInput from '@/Components/TextInput';
 import Pagination from '@/Components/Pagination';
+import clsx from 'clsx';
+import NavLink from '@/Components/NavLink';
 
-export default function Index(props) {
+
+export default function Index({ count_hard_skill, ...props }) {
     const { data: hard_skills, meta, links } = props.hard_skills;
 
     const { get } = useForm()
@@ -38,7 +41,7 @@ export default function Index(props) {
         e.preventDefault();
         setSearchQuery(e.target.value);
         get(`/skills/hard_skills?query=${e.target.value}`);
-      };
+    };
 
     return (
         <>
@@ -58,7 +61,7 @@ export default function Index(props) {
             <Container>
                 <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
                     <Navigation href={`/`}>Activitas</Navigation>
-                    <Navigation href={`/skills`}>Skills</Navigation>
+                    <Navigation href={route('skills.hardall')} className={clsx(usePage().url == usePage().url && 'from-red-500')}>Hard Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>
                     <Navigation href={`/educations`}>Educations</Navigation>
                     <Navigation href={`/experiences`}>Experiences</Navigation>
@@ -67,11 +70,17 @@ export default function Index(props) {
             </Container>
 
             <Container>
-                <Title title="Skills - Hard Skills" subtitle="Here are some of my abilities in the field of Web Developer" />
+                <Title title="Hard Skills" subtitle="Here are some of my abilities in the field of Web Developer" />
             </Container>
 
             <Container>
                 <div className='w-full flex justify-between items-center border-b mb-8 border-third gap-4'>
+                    <div className="w-max flex justify-end gap-4 py-3">
+                        <NavLink href={route('skills.index')} className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z" />
+                        </svg>
+                            Skills</NavLink>
+                    </div>
                     <div className='w-full'>
                         <TextInput
                             type="search"
@@ -82,10 +91,10 @@ export default function Index(props) {
                         />
                     </div>
                     <div className="w-max flex justify-end gap-4 py-3">
-
                         <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                        </svg>{hard_skills.length}</span>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                            {count_hard_skill}</span>
                     </div>
                 </div>
             </Container>

@@ -84,7 +84,6 @@ export default function Index({ hard_skills, soft_skills }) {
                         />
                     </div>
                     <div className="w-max flex justify-end gap-4 py-3">
-
                         <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                         </svg>{hard_skills.length}</span>
@@ -104,7 +103,7 @@ export default function Index({ hard_skills, soft_skills }) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                         {filteredHardSkills.map(skill => (
                             <CardHorizontal icon={skill.icon} key={skill.id}>
-                                <CardHorizontal.Badge badge={skill.level.name} color={`${skill.level.color}`} />
+                                <CardHorizontal.Badge badge={skill.level.name} className={skill.level.color} />
                                 <CardHorizontal.Title title={skill.title} />
                                 <CardHorizontal.Description description={skill.description} />
                                 <button type="button" onClick={(event) => show(skill, event)} className='flex justify-end ml-auto mr-4 items-center gap-2 w-max text-secondary hover:text-secondary/50 font-medium text-sm'> Read More..

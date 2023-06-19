@@ -5,7 +5,6 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
-import Guest from 'vendor/laravel/breeze/stubs/inertia-react/resources/js/Layouts/GuestLayout';
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -63,4 +62,4 @@ export default function ConfirmPassword() {
     );
 }
 
-ConfirmPassword.layout = page => <Guest children={page}>
+ConfirmPassword.layout = page => <Guest children={page} />

@@ -21,8 +21,6 @@ module.exports = {
                 fourth: '#3B2D4E',
                 fifth: '#7B4F8E',
                 sixth: '#dc2626',
-                seven: '#0284c7',
-                eight: '#059669',
             },
         },
     },

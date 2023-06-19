@@ -23,9 +23,9 @@ function Title({ title }) {
     )
 }
 
-function Badge({ badge, color }) {
+function Badge({ badge, className }) {
     return (
-        <span className={clsx('px-1 py-0.3 text-[12px] rounded text-third d-flex w-max', color)}>{badge}</span>
+        <span className={clsx(className, 'px-1.5 bg-gradient-to-r from-fourth to-primary py-0.5 text-[12px] rounded text-secondary flex w-max')}>{badge}</span>
     )
 }
 

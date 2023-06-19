@@ -18,13 +18,13 @@ class SkillResource extends JsonResource
     {
         if ($this->level === 1) {
             $level = "Beginner";
-            $color = "bg-red-600";
+            $color = "from-red-600";
         }elseif ($this->level === 2) {
             $level = "Intermediate";
-            $color = "bg-blue-600";
+            $color = "from-blue-400";
         }elseif($this->level === 3) {
             $level = "Advanced";
-            $color = "bg-green-600";
+            $color = "from-green-600";
         }
         return [
             "id" => $this->id,
@@ -34,7 +34,7 @@ class SkillResource extends JsonResource
             "level" => [
                 "id" => $this->level,
                 "name" => $level,
-                "color" => $color
+                "color" => $color,
             ],
             "icon" => $this->icon,
             "description" => $this->description

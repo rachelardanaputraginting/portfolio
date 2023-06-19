@@ -21,6 +21,7 @@ export default function App({ auth, header, children }) {
                 }}
             /></div>
             <Navbar />
+
             <Header >
                 <div className="flex items-start flex-wrap">
                     <div className="w-full sm:w-1/4">
