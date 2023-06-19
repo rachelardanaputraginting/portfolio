@@ -44,7 +44,7 @@ export default function App({ auth, header, children }) {
                             } text="Aceh, Indonesia"></Header.Sosial>
                         </div>
                         <Header.Subtitle subtitle="About Me" />
-                        <Header.Description description={`Menemukan kesenangan didunia Programming sejak SMK, selain belajar saya juga senang mengajarkan hal-hal yang sudah pernah saya pelajari melalui Article yang saya tulis dan Video Tutorial yang saya publish di Youtube. Melanjutkan pendidikan di Politeknik Negeri Lhokseumawe dengan jurusan yang sama. Ketertarikan belajar Programming membawa saya menjadi yang sekarang ini hingga penasaraan dengan hal baru dan terbiasa menghadapi suatu masalah`} />
+                        <Header.Description description={`Sejak bersekolah di SMK Negeri 2 Langsa dengan Program Keahlian Rekayasa Perangkat Lunak, kesenangan saya dalam dunia pemrograman mulai tumbuh. Selain belajar, saya juga menikmati kesempatan untuk berbagi pengetahuan melalui artikel yang saya tulis di RAJARTAN Tech dan video tutorial yang di publikasikan di saluran YouTube RAJARTAN | Programming. Pendidikan saya kemudian dilanjutkan di Politeknik Negeri Lhokseumawe dengan Program Studi Teknik Informatika.`} />
 
                     </div>
                 </div>

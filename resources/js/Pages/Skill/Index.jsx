@@ -14,12 +14,14 @@ import Error from '@/Components/Error';
 export default function Index({ hard_skills, soft_skills }) {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchQuerySoft, setSearchQuerySoft] = useState('');
+
     const filteredHardSkills = hard_skills.filter(skill =>
         skill.title.toLowerCase().includes(searchQuery.toLowerCase())
-    ).slice(0, 4);;
+    ).slice(0, 4);
+
     const filteredSoftSkills = soft_skills.filter(skill =>
         skill.title.toLowerCase().includes(searchQuerySoft.toLowerCase())
-    ).slice(0, 4);;
+    ).slice(0, 4);
 
     const { data, setData } = useForm({
         title: '',
@@ -27,7 +29,6 @@ export default function Index({ hard_skills, soft_skills }) {
         level: '',
         description: ''
     })
-
 
     let [isOpen, setIsOpen] = useState(false)
 
@@ -46,7 +47,7 @@ export default function Index({ hard_skills, soft_skills }) {
             <Modal show={isOpen} onClose={setIsOpen}>
                 <div className="mt-2 text-third flex w-1/4" dangerouslySetInnerHTML={{ __html: data.icon }} />
                 <Modal.Title title={data.title} />
-                <p className='px-3 text-sm py-1 bg-green-600 to-fifth flex items-center gap-2 max-w-max rounded m-4'>{data.level.name}</p>
+                <p className={`px-3 text-sm py-1 ${data.level.color} to-fifth flex items-center gap-2 max-w-max rounded m-4`}>{data.level.name}</p>
                 <Modal.Description description={data.description} />
                 <button type="button" onClick={onClose} className='fixed right-5 top-5 border-none z-[9999] text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -103,7 +104,7 @@ export default function Index({ hard_skills, soft_skills }) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                         {filteredHardSkills.map(skill => (
                             <CardHorizontal icon={skill.icon} key={skill.id}>
-                                <CardHorizontal.Badge badge={skill.level.name} className={`${skill.level.color}`} />
+                                <CardHorizontal.Badge badge={skill.level.name} color={`${skill.level.color}`} />
                                 <CardHorizontal.Title title={skill.title} />
                                 <CardHorizontal.Description description={skill.description} />
                                 <button type="button" onClick={(event) => show(skill, event)} className='flex justify-end ml-auto mr-4 items-center gap-2 w-max text-secondary hover:text-secondary/50 font-medium text-sm'> Read More..

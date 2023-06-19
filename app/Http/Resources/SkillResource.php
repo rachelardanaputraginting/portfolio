@@ -16,13 +16,13 @@ class SkillResource extends JsonResource
      */
     public function toArray($request)
     {
-        if ($this->level == 1) {
+        if ($this->level === 1) {
             $level = "Beginner";
-            $color = "bg-yellow-600";
-        }elseif ($this->level == 2) {
+            $color = "bg-red-600";
+        }elseif ($this->level === 2) {
             $level = "Intermediate";
-            $color = "bg-sky-600";
-        }else {
+            $color = "bg-blue-600";
+        }elseif($this->level === 3) {
             $level = "Advanced";
             $color = "bg-green-600";
         }

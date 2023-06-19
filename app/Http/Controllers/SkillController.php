@@ -14,13 +14,13 @@ class SkillController extends Controller
         if ($search_hard) {
             $hard_skills = Skill::query()
             ->where('category', 'hard')->where('title', 'LIKE', "%$search_hard%")
-            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
+            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
         } else {
             $hard_skills = Skill::query()
             ->where('category', 'hard')
-            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
+            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
         }
@@ -29,17 +29,18 @@ class SkillController extends Controller
         if ($search_soft) {
             $soft_skills = Skill::query()
             ->where('category', 'soft')->where('title', 'LIKE', "%$search_soft%")
-            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
+            ->select('id', 'title','category', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
         } else {
             $soft_skills = Skill::query()
             ->where('category', 'soft')
-            ->select('id', 'title', 'slug', 'icon', 'level', 'description')
+            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
             ->latest()
             ->get();
         }
 
+        // return SkillResource::collection($hard_skills);
         return inertia('Skill/Index', [
             "hard_skills" => SkillResource::collection($hard_skills),
             "soft_skills" => SkillResource::collection($soft_skills),
