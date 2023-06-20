@@ -22,7 +22,9 @@ Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');
 Route::get('/skills/hard_skills', [SkillController::class, 'hardall'])->name('skills.hardall');
 Route::resource('skills', SkillController::class);
 Route::resource('achievements', AchievementController::class);
-Route::resource('educations', EducationController::class);
+Route::get('/educations', [EducationController::class, 'index'])->name('educations.index');
+Route::get('/educations/formal_educations', [EducationController::class, 'formalall'])->name('educations.formalall');
+Route::get('/educations/informal_educations', [EducationController::class, 'informalall'])->name('educations.informalall');
 Route::resource('experiences', ExperienceController::class);
 
 

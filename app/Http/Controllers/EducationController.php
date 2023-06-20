@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EducationResource;
 use App\Models\Education;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,12 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $educations = Education::latest('year')->get();
+        $educations = Education::query()
+            ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
+            ->latest()
+            ->get();
         return inertia('Educations/Index', [
-            "educations" => $educations
+            "educations" => EducationResource::collection($educations),
         ]);
     }
 
