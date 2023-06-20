@@ -22,7 +22,7 @@ class EducationResource extends JsonResource
             "slug" => Str::slug($name),
             "department" => $this->department,
             "status" => $this->status,
-            "year" => $this->year,
+            "year" => $this->year ? $this->year : "Learning",
             "location" => $this->location,
             "description" => Str::limit($this->description, 50, '...'),
             "picture" => $this->picture ? Storage::url($this->picture) : 'https://flowbite.com/docs/images/blog/image-1.jpg',
