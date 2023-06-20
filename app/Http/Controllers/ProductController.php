@@ -18,7 +18,6 @@ class ProductController extends Controller
         $products = Product::query()
             ->select('title', 'slug', 'picture', 'user_id', 'link', 'description', 'id')
             ->latest()
-            ->limit(4)
             ->get();
         return inertia('Products/Index', [
             "products" => ProductResource::collection($products),
@@ -29,9 +28,12 @@ class ProductController extends Controller
         $products = Product::query()
             ->select('title', 'slug', 'picture', 'user_id', 'link', 'description', 'id')
             ->latest()
-            ->get();
-        return inertia('Products/Index', [
+            ->fastPaginate(3);
+
+        $count_product = Product::count();
+        return inertia('Products/All', [
             "products" => ProductResource::collection($products),
+            "count_product" => $count_product,
         ]);
     }
 }

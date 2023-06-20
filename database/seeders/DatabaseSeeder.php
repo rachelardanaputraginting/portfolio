@@ -80,6 +80,7 @@ class DatabaseSeeder extends Seeder
         Education::create([
             'user_id' => 1,
             'name' => 'SMK Negeri 2 Langsa',
+            'category' => 'informal',
             'slug' => 'smk-negeri-2-langsa',
             'department' => 'Rekayasa Perangkat Lunak',
             'year' => '2021',
@@ -92,10 +93,23 @@ class DatabaseSeeder extends Seeder
         Education::create([
             'user_id' => 1,
             'name' => 'Politeknik Negeri Lhokseumawe',
+            'category' => 'formal',
             'slug' => 'politeknik-negeri-lhokseumawe',
             'department' => 'Teknik Informatika',
             'location' => 'Lhokseumawe',
             'status' => 'Mahasiswa',
+            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit voluptates molestias expedita et porro, quasi odio exercitationem eum magni dolor deleniti consequuntur blanditiis similique veritatis facilis vero sed quia? Reprehenderit.',
+            'picture' => 'https://flowbite.com/docs/images/blog/image-1.jpg',
+        ]);
+
+        Education::create([
+            'user_id' => 1,
+            'name' => 'Universitas Gadjah Mada',
+            'category' => 'formal',
+            'slug' => 'universitas-gadjah-mada',
+            'department' => 'Teknik Informatika',
+            'location' => 'Yogyakarta',
+            'status' => 'Mahasiswa Non-Degree',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit voluptates molestias expedita et porro, quasi odio exercitationem eum magni dolor deleniti consequuntur blanditiis similique veritatis facilis vero sed quia? Reprehenderit.',
             'picture' => 'https://flowbite.com/docs/images/blog/image-1.jpg',
         ]);

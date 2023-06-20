@@ -103,7 +103,7 @@ export default function Index({ hard_skills, soft_skills }) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                         {filteredHardSkills.map(skill => (
                             <CardHorizontal icon={skill.icon} key={skill.id}>
-                                <CardHorizontal.Badge badge={skill.level.name} className={skill.level.color} />
+                                <CardHorizontal.Badge badge={skill.level.name} className={`bg-[${skill.level.color}]`} />
                                 <CardHorizontal.Title title={skill.title} />
                                 <CardHorizontal.Description description={skill.description} />
                                 <button type="button" onClick={(event) => show(skill, event)} className='flex justify-end ml-auto mr-4 items-center gap-2 w-max text-secondary hover:text-secondary/50 font-medium text-sm'> Read More..
