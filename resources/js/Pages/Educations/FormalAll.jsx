@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
-import { Head, Link, useForm } from '@inertiajs/react';
+import React from 'react';
+import { useState } from 'react'
+import { Head, useForm, usePage } from '@inertiajs/react';
 import Container from '@/Components/Container';
 import App from '@/Layouts/App';
 import Navigation from '@/Components/Navigation';
 import CardHorizontal from '@/Components/CardHorizontal';
 import Title from '@/Components/Title';
-import TextInput from '@/Components/TextInput';
 import Modal from '@/Components/Modal';
+import TextInput from '@/Components/TextInput';
+import Pagination from '@/Components/Pagination';
+import clsx from 'clsx';
+import NavLink from '@/Components/NavLink';
 
-export default function Index({ formal_educations, informal_educations }) {
+
+export default function Index({ count_formal_education, ...props }) {
+    const { data: formal_educations, meta, links } = props.formal_educations;
+
+    const { get } = useForm()
     const [searchQuery, setSearchQuery] = useState('');
-    const [searchQueryInformal, setSearchQueryInformal] = useState('');
-
-    const filteredEducations = formal_educations.filter(formal_education =>
-        formal_education.name.toLowerCase().includes(searchQuery.toLowerCase())
-    ).slice(0, 2);
-
-    const filteredEducationsInformal = informal_educations.filter(informal_education =>
-        informal_education.name.toLowerCase().includes(searchQueryInformal.toLowerCase())
-    ).slice(0, 2);
-
     const { data, setData } = useForm({
         name: '',
         slug: '',
@@ -42,11 +40,15 @@ export default function Index({ formal_educations, informal_educations }) {
         setIsOpen(false);
     };
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        setSearchQuery(e.target.value);
+        get(`/educations/formal_educations?query=${e.target.value}`);
+    };
+
     return (
         <>
-            <Head title="Educations" />
-
-            <Modal show={isOpen} onClose={setIsOpen} >
+             <Modal show={isOpen} onClose={setIsOpen} >
                 <img src={data.picture} alt={data.picture} className='w-1/4 p-4 ' />
                 <Modal.Title title={data.title} />
                 <p className='px-3 text-sm py-1 bg-gradient-to-r from-yellow-500 to-fifth flex items-center gap-2 max-w-max rounded m-4'>{data.department}</p>
@@ -79,52 +81,54 @@ export default function Index({ formal_educations, informal_educations }) {
                 </button>
             </Modal >
 
+            <Head title="Educations" />
+
             <Container>
                 <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
                     <Navigation href={`/`}>Activitas</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
-                    <Navigation href={`/education`}>Products</Navigation>
-                    <Navigation href={`/educations`}>Educations</Navigation>
+                    <Navigation href={`/products`}>Products</Navigation>
+                    <Navigation href={route('educations.formalall')} className={clsx(usePage().url == usePage().url && 'from-red-500')}>Hard Skills</Navigation>
                     <Navigation href={`/experiences`}>Experiences</Navigation>
                     <Navigation href={`/achievements`}>Achievements</Navigation>
                 </div>
             </Container>
 
             <Container>
-                <Title title="Educations - Formal Educations" subtitle="The following is my educational history so far" />
+                <Title title="Formal Educations" subtitle="The following is my educational history so far" />
             </Container>
 
             <Container>
                 <div className='w-full flex justify-between items-center border-b mb-4 border-third gap-4'>
+                    <div className="w-max flex justify-end gap-4 py-3">
+                        <NavLink href={route('educations.index')} className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z" />
+                        </svg>
+                            Educations</NavLink>
+                    </div>
                     <div className='w-full'>
                         <TextInput
                             type="search"
                             className="w-full"
-                            placeholder="Search formal education"
+                            placeholder="Search Formal skills"
                             value={searchQuery}
-                            onChange={e => setSearchQuery(e.target.value)}
+                            onChange={handleSearch}
                         />
                     </div>
                     <div className="w-max flex justify-end gap-4 py-3">
                         <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                        </svg>{formal_educations.length}</span>
-                        {formal_educations.length > 0 ?
-                            <Link href={route('educations.formalall')} className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'>
-                                All <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="font-bold w-4 h-4">
-                                    < path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                </svg>
-                            </Link >
-                            : null}
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                            {count_formal_education}</span>
                     </div>
                 </div>
             </Container>
 
             <Container>
-            {filteredEducations.length > 0 ? <>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {filteredEducations.map(education => (
-                        <CardHorizontal src={`storage/${education.picture}`} key={education.id}>
+                {formal_educations.length > 0 ? <>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        {formal_educations.map(education => (
+                            <CardHorizontal src={`storage/${education.picture}`} key={education.id}>
                             <CardHorizontal.Badge badge={education.department} className={'from-yellow-500 px-2.5 py-1 bg-gradient-to-r text-base'} />
                             <CardHorizontal.Title title={education.name} />
                             <CardHorizontal.Description description={education.description} />
@@ -132,58 +136,11 @@ export default function Index({ formal_educations, informal_educations }) {
                             <button type="button" onClick={(event) => show(education, event)} className='flex justify-end ml-auto mr-4 items-center gap-2 w-max text-secondary hover:text-secondary/50 font-medium text-sm'> Read More..
                                 </button>
                         </CardHorizontal >
-                    ))}
-                </div>
+                        ))}
+                    </div>
                 </>
                     : <div className='text-sm text-center text-third font-light'>Data is still empty at this time</div>}
-            </Container >
-
-            <Container>
-                <Title title="Educations - Informal Educations" subtitle="The following is my educational history so far" />
-            </Container>
-
-            <Container>
-                <div className='w-full flex justify-between items-center border-b mb-4 border-third gap-4'>
-                    <div className='w-full'>
-                        <TextInput
-                            type="search"
-                            className="w-full"
-                            placeholder="Search informal education"
-                            value={searchQueryInformal}
-                            onChange={e => setSearchQueryInformal(e.target.value)}
-                        />
-                    </div>
-                    <div className="w-max flex justify-end gap-4 py-3">
-                        <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                        </svg>{informal_educations.length}</span>
-                        {informal_educations.length > 2 ?
-                            <Link href={route('educations.informalall')} className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'>
-                                All <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="font-bold w-4 h-4">
-                                    < path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                </svg>
-                            </Link >
-                            : null}
-                    </div>
-                </div>
-            </Container>
-
-            <Container>
-            {filteredEducationsInformal.length > 0 ? <>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {filteredEducationsInformal.map(education => (
-                        <CardHorizontal src={`storage/${education.picture}`} key={education.id}>
-                            <CardHorizontal.Badge badge={education.department} className={'from-yellow-500 px-2.5 py-1 bg-gradient-to-r text-base'} />
-                            <CardHorizontal.Title title={education.name} />
-                            <CardHorizontal.Description description={education.description} />
-                            <CardHorizontal.Footer year={education.year} location={education.location} position={education.status} />
-                            <button type="button" onClick={(event) => show(education, event)} className='flex justify-end ml-auto mr-4 items-center gap-2 w-max text-secondary hover:text-secondary/50 font-medium text-sm'> Read More..
-                                </button>
-                        </CardHorizontal >
-                    ))}
-                </div>
-                </>
-                    : <div className='text-sm text-center text-third font-light'>Data is still empty at this time</div>}
+                <Pagination meta={meta} links={links} />
             </Container >
         </>
     );

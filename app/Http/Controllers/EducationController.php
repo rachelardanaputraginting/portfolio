@@ -33,69 +33,30 @@ class EducationController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function formalall(Request $request)
     {
-        //
+        $search_formal = $request->input('query');
+        if ($search_formal) {
+            $formal_educations = Education::query()
+            ->where('category', 'formal')->where('name', 'LIKE', "%$search_formal%")
+            ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
+            ->latest()
+            ->fastPaginate(4)->withQueryString();
+        } else {
+            $formal_educations = Education::query()
+            ->where('category', 'formal')
+            ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
+            ->latest()
+            ->fastPaginate(4)->withQueryString();
+        }
+
+        $count_formal_education = Education::where('category', 'formal')->count();
+
+        return inertia('Educations/FormalAll', [
+            "formal_educations" => EducationResource::collection($formal_educations),
+            "count_formal_education" => $count_formal_education,
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Education  $education
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Education $education)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Education  $education
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Education $education)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Education  $education
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Education $education)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Education  $education
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Education $education)
-    {
-        //
-    }
 }
