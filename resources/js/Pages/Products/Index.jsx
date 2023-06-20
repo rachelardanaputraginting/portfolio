@@ -71,7 +71,7 @@ export default function Index({ products }) {
             </Container>
 
             <Container>
-                <div className='w-full flex justify-between items-center border-b mb-8 border-third gap-4'>
+                <div className='w-full flex justify-between items-center border-b mb-4 border-third gap-4'>
                     <div className='w-full'>
                         <TextInput
                             type="search"

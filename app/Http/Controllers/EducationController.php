@@ -15,12 +15,21 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $educations = Education::query()
+        $formal_educations = Education::query()
+            ->where('category', 'formal')
             ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
             ->latest()
             ->get();
+
+        $informal_educations = Education::query()
+            ->where('category', 'informal')
+            ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
+            ->latest()
+            ->get();
+
         return inertia('Educations/Index', [
-            "educations" => EducationResource::collection($educations),
+            "formal_educations" => EducationResource::collection($formal_educations),
+            "informal_educations" => EducationResource::collection($informal_educations),
         ]);
     }
 

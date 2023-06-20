@@ -73,7 +73,7 @@ export default function Index({ hard_skills, soft_skills }) {
             </Container>
 
             <Container>
-                <div className='w-full flex justify-between items-center border-b mb-8 border-third gap-4'>
+                <div className='w-full flex justify-between items-center border-b mb-4 border-third gap-4'>
                     <div className='w-full'>
                         <TextInput
                             type="search"
@@ -120,7 +120,7 @@ export default function Index({ hard_skills, soft_skills }) {
             </Container>
 
             <Container>
-                <div className='w-full flex justify-between items-center border-b mb-8 border-third gap-4'>
+                <div className='w-full flex justify-between items-center border-b mb-4 border-third gap-4'>
                     <div className='w-full flex gap-4'>
                     <TextInput
                             type="search"
