@@ -58,5 +58,30 @@ class EducationController extends Controller
         ]);
     }
 
+    public function informalall(Request $request)
+    {
+        $search_informal = $request->input('query');
+        if ($search_informal) {
+            $informal_educations = Education::query()
+            ->where('category', 'formal')->where('name', 'LIKE', "%$search_informal%")
+            ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
+            ->latest()
+            ->fastPaginate(4)->withQueryString();
+        } else {
+            $informal_educations = Education::query()
+            ->where('category', 'formal')
+            ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
+            ->latest()
+            ->fastPaginate(4)->withQueryString();
+        }
+
+        $count_informal_education = Education::where('category', 'formal')->count();
+
+        return inertia('Educations/InformalAll', [
+            "informal_educations" => EducationResource::collection($informal_educations),
+            "count_informal_education" => $count_informal_education,
+        ]);
+    }
+
 
 }
