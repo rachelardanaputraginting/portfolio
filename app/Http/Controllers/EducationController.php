@@ -63,13 +63,13 @@ class EducationController extends Controller
         $search_informal = $request->input('query');
         if ($search_informal) {
             $informal_educations = Education::query()
-            ->where('category', 'formal')->where('name', 'LIKE', "%$search_informal%")
+            ->where('category', 'informal')->where('name', 'LIKE', "%$search_informal%")
             ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
             ->latest()
             ->fastPaginate(4)->withQueryString();
         } else {
             $informal_educations = Education::query()
-            ->where('category', 'formal')
+            ->where('category', 'informal')
             ->select('id', 'name', 'slug', 'picture', 'department', 'year', 'location', 'status', 'description')
             ->latest()
             ->fastPaginate(4)->withQueryString();

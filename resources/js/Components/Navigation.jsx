@@ -8,7 +8,7 @@ function Navigation({ children, className, href, active, ...props }) {
             <Link
                 {...props}
                 href={href}
-                className={clsx(usePage().url == href && 'from-red-500', className, 'rounded font-medium w-40 py-2.5 text-center text-third bg-gradient-to-r from-fifth block')}> {children}</Link>
+                className={clsx(usePage().url == href && 'from-red-500', className, 'rounded font-medium w-48 py-2.5 text-center text-third bg-gradient-to-r from-fifth block')}> {children}</Link>
         </div >
     )
 }

@@ -13,8 +13,8 @@ import clsx from 'clsx';
 import NavLink from '@/Components/NavLink';
 
 
-export default function Index({ count_formal_education, ...props }) {
-    const { data: formal_educations, meta, links } = props.formal_educations;
+export default function Index({ count_informal_education, ...props }) {
+    const { data: informal_educations, meta, links } = props.informal_educations;
 
     const { get } = useForm()
     const [searchQuery, setSearchQuery] = useState('');
@@ -43,7 +43,7 @@ export default function Index({ count_formal_education, ...props }) {
     const handleSearch = (e) => {
         e.preventDefault();
         setSearchQuery(e.target.value);
-        get(`/educations/formal_educations?query=${e.target.value}`);
+        get(`/educations/informal_educations?query=${e.target.value}`);
     };
 
     return (
@@ -88,14 +88,14 @@ export default function Index({ count_formal_education, ...props }) {
                     <Navigation href={`/`}>Activitas</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>
-                    <Navigation href={route('educations.formalall')} className={clsx(usePage().url == usePage().url && 'from-red-500')}>Formal Educations</Navigation>
+                    <Navigation href={route('educations.informalall')} className={clsx(usePage().url == usePage().url && 'from-red-500')}>Informal Educations</Navigation>
                     <Navigation href={`/experiences`}>Experiences</Navigation>
                     <Navigation href={`/achievements`}>Achievements</Navigation>
                 </div>
             </Container>
 
             <Container>
-                <Title title="Formal Educations" subtitle="The following is my educational history so far" />
+                <Title title="Informal Educations" subtitle="The following is my educational history so far" />
             </Container>
 
             <Container>
@@ -110,7 +110,7 @@ export default function Index({ count_formal_education, ...props }) {
                         <TextInput
                             type="search"
                             className="w-full"
-                            placeholder="Search Formal skills"
+                            placeholder="Search Informal educations"
                             value={searchQuery}
                             onChange={handleSearch}
                         />
@@ -119,15 +119,15 @@ export default function Index({ count_formal_education, ...props }) {
                         <span className='rounded font-regular w-max py-2 px-3 text-center text-third bg-gradient-to-r from-fifth flex gap-1 items-center'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
                         </svg>
-                            {count_formal_education}</span>
+                            {count_informal_education}</span>
                     </div>
                 </div>
             </Container>
 
             <Container>
-                {formal_educations.length > 0 ? <>
+                {informal_educations.length > 0 ? <>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                        {formal_educations.map(education => (
+                        {informal_educations.map(education => (
                             <CardHorizontal src={`storage/${education.picture}`} key={education.id}>
                             <CardHorizontal.Badge badge={education.department} className={'from-yellow-500 px-2.5 py-1 bg-gradient-to-r text-base'} />
                             <CardHorizontal.Title title={education.name} />
