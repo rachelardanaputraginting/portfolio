@@ -23,10 +23,15 @@ Route::get('/skills/hard_skills', [SkillController::class, 'hardall'])->name('sk
 Route::get('/skills/soft_skills', [SkillController::class, 'softall'])->name('skills.softall');
 Route::resource('skills', SkillController::class);
 Route::resource('achievements', AchievementController::class);
+
 Route::get('/educations', [EducationController::class, 'index'])->name('educations.index');
 Route::get('/educations/formal_educations', [EducationController::class, 'formalall'])->name('educations.formalall');
 Route::get('/educations/informal_educations', [EducationController::class, 'informalall'])->name('educations.informalall');
-Route::resource('experiences', ExperienceController::class);
+
+Route::get('/experiences', [ExperienceController::class, 'index'])->name('experiences.index');
+Route::get('/experiences/work_experiences', [ExperienceController::class, 'work_all'])->name('experiences.workall');
+Route::get('/experiences/activity_experiences', [ExperienceController::class, 'activity_all'])->name('experiences.activityall');
+
 
 
 Route::middleware('auth')->group(function () {
