@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('name');
+            $table->enum('category', ['work', 'activity']);
             $table->string('slug')->unique();
             $table->string('position');
             $table->text('description');

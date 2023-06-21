@@ -14,13 +14,21 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        $hard_skills = Experience::query()
-            ->where('category', 'hard')
-            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
+        $work_experiences = Experience::query()
+            ->where('category', 'work')
+            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status')
             ->latest()
             ->get();
+
+        $activity_experiences = Experience::query()
+            ->where('category', 'activity')
+            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status')
+            ->latest()
+            ->get();
+
         return inertia('Experiences/Index', [
-            "experiences" => $experiences,
+            "work_experiences" => $work_experiences,
+            "activity_experiences" => $activity_experiences,
         ]);
     }
 

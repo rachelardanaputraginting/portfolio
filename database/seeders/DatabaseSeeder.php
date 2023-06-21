@@ -7,7 +7,6 @@ namespace Database\Seeders;
 use App\Models\Achievement;
 use App\Models\Education;
 use App\Models\Experience;
-use App\Models\Experiences;
 use App\Models\Product;
 use App\Models\Skill;
 use App\Models\User;
@@ -54,12 +53,52 @@ class DatabaseSeeder extends Seeder
         Experience::create([
             'user_id' => 1,
             'name' => "Kejaksaan Negeri Langsa",
+            'category' => 'work',
             'slug' => 'kejaksaan-negeri-langsa',
             'position' => 'Operator',
             'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. At suscipit aperiam quia totam doloremque voluptas quam aliquid provident inventore harum similique ex aliquam natus, minus soluta voluptate vitae! Temporibus, deserunt.',
             'entry_year' => '2021',
             'out_year' => '2021',
             'location' => 'Langsa',
+            'status' => 'Intership',
+            'picture' => 'https://flowbite.com/docs/images/blog/image-1.jpg',
+        ]);
+        Experience::create([
+            'user_id' => 1,
+            'name' => "Pajar Las",
+            'category' => 'work',
+            'slug' => 'pajar-las',
+            'position' => 'Operator',
+            'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. At suscipit aperiam quia totam doloremque voluptas quam aliquid provident inventore harum similique ex aliquam natus, minus soluta voluptate vitae! Temporibus, deserunt.',
+            'entry_year' => '2021',
+            'out_year' => '2021',
+            'location' => 'Aceh Tamiang',
+            'status' => 'Intership',
+            'picture' => 'https://flowbite.com/docs/images/blog/image-1.jpg',
+        ]);
+        Experience::create([
+            'user_id' => 1,
+            'name' => "Fajar Aluminium",
+            'category' => 'activity',
+            'slug' => 'fajar-aluminium',
+            'position' => 'Operator',
+            'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. At suscipit aperiam quia totam doloremque voluptas quam aliquid provident inventore harum similique ex aliquam natus, minus soluta voluptate vitae! Temporibus, deserunt.',
+            'entry_year' => '2021',
+            'out_year' => '2021',
+            'location' => 'Tekengon',
+            'status' => 'Intership',
+            'picture' => 'https://flowbite.com/docs/images/blog/image-1.jpg',
+        ]);
+        Experience::create([
+            'user_id' => 1,
+            'name' => "Pajar Steel",
+            'category' => 'activity',
+            'slug' => 'pajar-steel',
+            'position' => 'Operator',
+            'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. At suscipit aperiam quia totam doloremque voluptas quam aliquid provident inventore harum similique ex aliquam natus, minus soluta voluptate vitae! Temporibus, deserunt.',
+            'entry_year' => '2021',
+            'out_year' => '2021',
+            'location' => 'Pulau Tiga',
             'status' => 'Intership',
             'picture' => 'https://flowbite.com/docs/images/blog/image-1.jpg',
         ]);
