@@ -20,6 +20,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/all', [ProductController::class, 'all'])->name('products.all');
 Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');
 Route::get('/skills/hard_skills', [SkillController::class, 'hardall'])->name('skills.hardall');
+Route::get('/skills/soft_skills', [SkillController::class, 'softall'])->name('skills.softall');
 Route::resource('skills', SkillController::class);
 Route::resource('achievements', AchievementController::class);
 Route::get('/educations', [EducationController::class, 'index'])->name('educations.index');

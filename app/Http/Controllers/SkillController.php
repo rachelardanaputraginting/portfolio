@@ -54,4 +54,29 @@ class SkillController extends Controller
             "count_hard_skill" => $count_hard_skill,
         ]);
     }
+
+    public function softall(Request $request)
+    {
+        $search_soft = $request->input('query');
+        if ($search_soft) {
+            $soft_skills = Skill::query()
+            ->where('category', 'soft')->where('title', 'LIKE', "%$search_soft%")
+            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
+            ->latest()
+            ->fastPaginate(4)->withQueryString();
+        } else {
+            $soft_skills = Skill::query()
+            ->where('category', 'soft')
+            ->select('id', 'title', 'category', 'slug', 'icon', 'level', 'description')
+            ->latest()
+            ->fastPaginate(4)->withQueryString();
+        }
+
+        $count_soft_skill = Skill::where('category', 'soft')->count();
+
+        return inertia('Skill/SoftAll', [
+            "soft_skills" => SkillResource::collection($soft_skills),
+            "count_soft_skill" => $count_soft_skill,
+        ]);
+    }
 }
