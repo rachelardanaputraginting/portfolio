@@ -27,6 +27,8 @@ class EducationController extends Controller
             ->latest()
             ->get();
 
+            // return EducationResource::collection($formal_educations);
+
         return inertia('Educations/Index', [
             "formal_educations" => EducationResource::collection($formal_educations),
             "informal_educations" => EducationResource::collection($informal_educations),
