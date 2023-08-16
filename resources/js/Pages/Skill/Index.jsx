@@ -8,8 +8,6 @@ import CardHorizontal from '@/Components/CardHorizontal';
 import Title from '@/Components/Title';
 import Modal from '@/Components/Modal';
 import TextInput from '@/Components/TextInput';
-import Select from '@/Components/Select';
-import Error from '@/Components/Error';
 
 export default function Index({ hard_skills, soft_skills }) {
     const [searchQuery, setSearchQuery] = useState('');
@@ -155,7 +153,7 @@ export default function Index({ hard_skills, soft_skills }) {
                                 <CardHorizontal.Description description={skill.description} />
                                 <button type="button" onClick={(event) => show(skill, event)} className='flex justify-end ml-auto mr-4 items-center gap-2 w-max text-secondary hover:text-secondary/50 font-medium text-sm'> Read More..
                                 </button>
-                            </CardHorizontal >
+                            </CardHorizontal>
                         ))}
                     </div>
                 </>
