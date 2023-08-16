@@ -81,7 +81,7 @@ export default function Index({ work_experiences, activity_experiences }) {
             <Head title="Experiences - Work Experiences" />
             <Container>
                 <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
-                    <Navigation href={`/`}>Activitas</Navigation>
+                    <Navigation href={`/`}>Services</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>
                     <Navigation href={`/educations`}>Educations</Navigation>

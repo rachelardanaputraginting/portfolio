@@ -61,7 +61,7 @@ export default function Index(props) {
                     </div>
                 </div>
 
-                <Modal.Description description={data.description + 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam dolorum unde rem doloremque culpa placeat, non eum vitae maiores beatae dolorem dolor facilis. Rerum odio nostrum minus quae fugit dolores cupiditate maiores! Earum possimus libero maiores dolores ab ipsam. Ipsa molestiae perferendis incidunt debitis magni voluptatum id cupiditate excepturi ad, sapiente eligendi obcaecati vitae distinctio eaque, ipsam rerum, unde dolore quidem voluptates porro veniam. Cupiditate corrupti, ullam fugit officia hic deserunt similique modi nemo nobis, quidem eaque sed quia asperiores blanditiis doloribus quae voluptas illum fugiat. Blanditiis voluptatem incidunt vero sit quam non aliquam? A animi perferendis fugit saepe recusandae?'} />
+                <Modal.Description description={data.description} />
                 <button onClick={onClose} className='fixed right-5 top-5 border-none z-[9999] text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>

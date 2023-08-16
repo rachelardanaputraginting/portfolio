@@ -85,7 +85,7 @@ export default function Index({ count_informal_education, ...props }) {
 
             <Container>
                 <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
-                    <Navigation href={`/`}>Activitas</Navigation>
+                    <Navigation href={`/`}>Services</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>
                     <Navigation href={route('educations.informalall')} className={clsx(usePage().url == usePage().url && 'from-red-500')}>Informal Educations</Navigation>

@@ -78,10 +78,10 @@ export default function Index({ work_experiences, activity_experiences }) {
                 </button>
             </Modal>
 
-            <Head title="Experiences - Work Experiences" />
+            <Head title="Experiences" />
             <Container>
                 <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
-                    <Navigation href={`/`}>Activitas</Navigation>
+                    <Navigation href={`/`}>Services</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>
                     <Navigation href={`/educations`}>Educations</Navigation>
@@ -91,7 +91,7 @@ export default function Index({ work_experiences, activity_experiences }) {
             </Container>
 
             <Container>
-                <Title title="Work Experiences" subtitle="Here are some of my work experiences in the Web Developer field" />
+                <Title title="Experiences - Work Experiences" subtitle="Here are some of my work experiences in the Web Developer field" />
             </Container>
 
             <Container>
@@ -141,7 +141,7 @@ export default function Index({ work_experiences, activity_experiences }) {
 
             {/* Activity Experiences */}
             <Container>
-                <Title title="Activity Experiences" subtitle="Here are some of my activity experiences in the Web Developer field" />
+                <Title title="Experiences - Activity Experiences" subtitle="Here are some of my activity experiences in the Web Developer field" />
             </Container>
 
             <Container>

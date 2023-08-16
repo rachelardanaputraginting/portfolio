@@ -12,7 +12,7 @@ export default function Home(props) {
             <Head title="Home" />
             <Container>
                 <div className="scrolling-wrapper flex flex-nowrap overflow-x-scroll gap-4">
-                    <Navigation href={`/`}>Activitas</Navigation>
+                    <Navigation href={`/`}>Services</Navigation>
                     <Navigation href={`/skills`}>Skills</Navigation>
                     <Navigation href={`/products`}>Products</Navigation>
                     <Navigation href={`/educations`}>Educations</Navigation>
@@ -22,7 +22,7 @@ export default function Home(props) {
             </Container>
 
             <Container>
-                <Title title="Activitas" subtitle="Here are some of my activities field of Web Developers" />
+                <Title title="Services" subtitle="Here are some of my activities field of Web Developers" />
             </Container>
 
             <Container>
@@ -39,7 +39,7 @@ export default function Home(props) {
                     </svg>}>
                         <CardHorizontal.Title title="Belajar React Native" />
                         <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
-                    </CardHorizontal >
+                    </CardHorizontal>
                     <CardHorizontal icon={<svg xmlns=" http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-react" width={120} height={120} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102" />
@@ -52,7 +52,7 @@ export default function Home(props) {
                     </svg>}>
                         <CardHorizontal.Title title="Belajar React Native" />
                         <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
-                    </CardHorizontal >
+                    </CardHorizontal>
                     <CardHorizontal icon={<svg xmlns=" http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-react" width={120} height={120} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102" />
@@ -65,7 +65,7 @@ export default function Home(props) {
                     </svg>}>
                         <CardHorizontal.Title title="Belajar React Native" />
                         <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
-                    </CardHorizontal >
+                    </CardHorizontal>
                     <CardHorizontal icon={<svg xmlns=" http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-react" width={120} height={120} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102" />
@@ -78,7 +78,7 @@ export default function Home(props) {
                     </svg>}>
                         <CardHorizontal.Title title="Belajar React Native" />
                         <CardHorizontal.Description description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quas, obcaecati accusantium dolorem quod delectus tempora veniam deserunt laudantium vitae quos aspernatur nemo tenetur!" />
-                    </CardHorizontal >
+                    </CardHorizontal>
                 </div>
             </Container >
         </>
