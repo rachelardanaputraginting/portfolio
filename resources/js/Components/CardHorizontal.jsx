@@ -8,7 +8,7 @@ function CardHorizontal({ icon, children, className, src, rank }) {
             <div className="w-1/4">
                 <div className={clsx('mx-auto mt-2 text-third w-3/4 flex text-center', className)} dangerouslySetInnerHTML={{ __html: icon }} />
                 <h1 className='text-[130px] font-bold font-mono text-center mx-auto flex text-third'>{rank}</h1>
-                <img src={src} width='120' className='mt-4 mx-auto flex text-center' />
+                <img src={src} width='120' className='mt-4 mx-auto flex text-center rounded'  />
             </div>
             <div className="w-3/4 flex flex-col justify-between py-4 pl-4 leading-normal">
                 {children}

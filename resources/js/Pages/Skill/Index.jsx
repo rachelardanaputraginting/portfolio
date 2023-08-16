@@ -113,7 +113,7 @@ export default function Index({ hard_skills, soft_skills }) {
                     </div>
                 </>
                     : <div className='text-sm text-center text-third font-light'>Data is still empty at this time</div>}
-            </Container >
+            </Container>
 
             <Container>
                 <Title title="Skills - Soft Skills" subtitle="Here are some of my abilities in the field of Web Developer" />

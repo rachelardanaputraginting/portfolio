@@ -16,13 +16,13 @@ class ExperienceController extends Controller
     {
         $work_experiences = Experience::query()
             ->where('category', 'work')
-            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status')
+            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
             ->latest()
             ->get();
 
         $activity_experiences = Experience::query()
             ->where('category', 'activity')
-            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status')
+            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
             ->latest()
             ->get();
 
