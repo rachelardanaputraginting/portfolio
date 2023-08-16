@@ -32,13 +32,22 @@ class ExperienceController extends Controller
         ]);
     }
 
-    public function work_all()
+    public function work_all(Request $request)
     {
-        $work_experiences = Experience::query()
-            ->where('category', 'work')
-            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
-            ->latest()
-            ->get();
+        $search_work = $request->input('query');
+        if ($search_work) {
+            $work_experiences = Experience::query()
+                ->where('category', 'work')->where('name', 'LIKE', "%$search_work%")
+                ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
+                ->latest()
+                ->get();
+        } else {
+            $work_experiences = Experience::query()
+                ->where('category', 'work')
+                ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
+                ->latest()
+                ->get();
+        }
 
         return inertia('Experiences/WorkAll', [
             "work_experiences" => $work_experiences,
