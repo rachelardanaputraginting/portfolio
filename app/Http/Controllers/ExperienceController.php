@@ -32,6 +32,32 @@ class ExperienceController extends Controller
         ]);
     }
 
+    public function work_all()
+    {
+        $work_experiences = Experience::query()
+            ->where('category', 'work')
+            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
+            ->latest()
+            ->get();
+
+        return inertia('Experiences/WorkAll', [
+            "work_experiences" => $work_experiences,
+        ]);
+    }
+
+    public function activity_all()
+    {
+        $activity_experiences = Experience::query()
+            ->where('category', 'activity')
+            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
+            ->latest()
+            ->get();
+
+        return inertia('Experiences/ActivityAll', [
+            "activity_experiences" => $activity_experiences,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
