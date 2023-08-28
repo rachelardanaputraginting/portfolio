@@ -54,13 +54,23 @@ class ExperienceController extends Controller
         ]);
     }
 
-    public function activity_all()
+    public function activity_all(Request $request)
     {
-        $activity_experiences = Experience::query()
-            ->where('category', 'activity')
-            ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
-            ->latest()
-            ->get();
+        $search_activity = $request->input('query');
+        if ($search_activity) {
+            $activity_experiences = Experience::query()
+                ->where('category', 'activity')->where('name', 'LIKE', "%$search_activity%")
+                ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
+                ->latest()
+                ->get();
+        } else {
+            $activity_experiences = Experience::query()
+                ->where('category', 'activity')
+                ->select('id', 'name', 'position', 'entry_year', 'out_year', 'description', 'location', 'status', 'picture')
+                ->latest()
+                ->get();
+        }
+
 
         return inertia('Experiences/ActivityAll', [
             "activity_experiences" => $activity_experiences,
